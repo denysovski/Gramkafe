@@ -70,7 +70,7 @@ export function About() {
           >
             <div className="aspect-4/5 relative rounded-3xl overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80"
+                src="/images/about-story.jpg"
                 alt="Útulný interiér kavárny"
                 fill
                 className="object-cover"

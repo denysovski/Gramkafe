@@ -58,7 +58,7 @@ export function Hero() {
           >
             <div className="relative aspect-4/5 w-full overflow-hidden rounded-[2.25rem] border border-border/40 shadow-2xl">
               <Image
-                src="/images/hero-snapinsta.jpg"
+                src="/images/hero-landing.jpg"
                 alt="Interiér kavárny Gram Kafé"
                 fill
                 className="object-cover"

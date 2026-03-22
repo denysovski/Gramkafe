@@ -145,9 +145,9 @@ const categories = [
 ]
 
 const previewSections = [
-  { id: "alkohol", label: "Alkoholické" },
-  { id: "nealko", label: "Nealkoholické" },
-  { id: "sladke", label: "Dezerty" },
+  { id: "sezoni", label: "Sezonní nápoje" },
+  { id: "kava", label: "Káva" },
+  { id: "sladke", label: "Něco k zakousnutí" },
 ] as const
 
 type MenuProps = {
@@ -212,7 +212,7 @@ function getItemMeta(name: string, description: string) {
 
 export function Menu({ preview = false }: MenuProps) {
   const [activeCategory, setActiveCategory] = useState(
-    preview ? "nealko" : categories[0].id
+    preview ? "sezoni" : categories[0].id
   )
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
@@ -241,8 +241,12 @@ export function Menu({ preview = false }: MenuProps) {
     <section ref={sectionRef} id="menu" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div
-          className={`text-center max-w-2xl mx-auto transition-all duration-1000 ${
-            isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          className={`text-center max-w-2xl mx-auto ${
+            preview
+              ? "animate-in zoom-in-95 duration-200"
+              : `transition-all duration-1000 ${
+                  isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`
           }`}
         >
           <span className="text-sm font-medium tracking-widest uppercase text-primary">
@@ -261,9 +265,7 @@ export function Menu({ preview = false }: MenuProps) {
         {preview ? (
           <>
             <div
-              className={`mt-12 flex flex-wrap justify-center gap-3 transition-all duration-1000 delay-200 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className="mt-12 flex flex-wrap justify-center gap-3 animate-in zoom-in-95 duration-200"
             >
               {previewSections.map((section) => (
                 <button
@@ -283,26 +285,26 @@ export function Menu({ preview = false }: MenuProps) {
 
             <div
               key={activeCategory}
-              className={`mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-1000 delay-300 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-in zoom-in-95 duration-200"
             >
-              {previewItems.map((item, index) => (
+              {previewItems.map((item, index) => {
+                const meta = getItemMeta(item.name, item.description)
+                return (
                 <article
                   key={item.name}
-                  className="h-full p-5 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2"
-                  style={{ animationDelay: `${index * 80}ms` }}
+                  className="h-full min-h-[240px] p-5 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 animate-in zoom-in-95"
+                  style={{ animationDelay: `${index * 50}ms` }}
                 >
+                  <div className="flex h-full flex-col">
                   <div className="mt-1 flex items-start justify-between gap-3">
-                    <h3 className="font-medium text-lg text-foreground">{getItemMeta(item.name, item.description).displayName}</h3>
+                    <h3 className="font-medium text-lg text-foreground">{meta.displayName}</h3>
                     <span className="text-sm font-semibold text-accent whitespace-nowrap">
-                      {normalizePrice(item.price)}{getItemMeta(item.name, item.description).volume ? ` / ${getItemMeta(item.name, item.description).volume}` : ""}
+                      {normalizePrice(item.price)}{meta.volume ? ` / ${meta.volume}` : ""}
                     </span>
                   </div>
 
-                  {getItemMeta(item.name, item.description).flavors.length > 0 && (
-                    <div className="mt-3 flex flex-wrap gap-2">
-                      {getItemMeta(item.name, item.description).flavors.map((flavor) => (
+                  <div className="mt-3 min-h-[36px] flex flex-wrap gap-2">
+                    {meta.flavors.map((flavor) => (
                         <span
                           key={flavor}
                           className="inline-flex rounded-full border border-border/70 bg-secondary/70 px-2.5 py-1 text-xs text-muted-foreground"
@@ -310,16 +312,14 @@ export function Menu({ preview = false }: MenuProps) {
                           {flavor}
                         </span>
                       ))}
-                    </div>
-                  )}
+                  </div>
 
-                  {getItemMeta(item.name, item.description).description && (
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                      {getItemMeta(item.name, item.description).description}
-                    </p>
-                  )}
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed min-h-[44px]">
+                    {meta.description || " "}
+                  </p>
+                  </div>
                 </article>
-              ))}
+              )})}
 
               <Link
                 href="/menu"
