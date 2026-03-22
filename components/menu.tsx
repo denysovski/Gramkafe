@@ -1,9 +1,8 @@
-"use client"
+﻿"use client"
 
 import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
-import { Coffee, GlassWater, Cake, IceCream, Wine, Beer } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { ArrowRight, Beer, Cake, Coffee, GlassWater, Wine } from "lucide-react"
 
 const categories = [
   {
@@ -145,21 +144,20 @@ const categories = [
   },
 ]
 
-const featuredPreview = [
-  { name: "Pernikove latte", price: "89 Kc", category: "Sezonni" },
-  { name: "Flat White", price: "89 Kc", category: "Kava" },
-  { name: "Draci dech limonada", price: "65 Kc", category: "Limonady" },
-  { name: "Panini Swiss", price: "99 Kc", category: "Panini" },
-  { name: "Ryzlink vlassky", price: "40 / 290 Kc", category: "Vina" },
-  { name: "Horka cokolada", price: "55 Kc", category: "Horke napoje" },
-]
+const previewSections = [
+  { id: "alkohol", label: "Alkoholické" },
+  { id: "nealko", label: "Nealkoholické" },
+  { id: "sladke", label: "Dezerty" },
+] as const
 
 type MenuProps = {
   preview?: boolean
 }
 
 export function Menu({ preview = false }: MenuProps) {
-  const [activeCategory, setActiveCategory] = useState(categories[0].id)
+  const [activeCategory, setActiveCategory] = useState(
+    preview ? "nealko" : categories[0].id
+  )
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -180,8 +178,8 @@ export function Menu({ preview = false }: MenuProps) {
     return () => observer.disconnect()
   }, [])
 
-  const activeItems =
-    categories.find((c) => c.id === activeCategory)?.items || []
+  const activeItems = categories.find((c) => c.id === activeCategory)?.items || []
+  const previewItems = activeItems.slice(0, 4)
 
   return (
     <section ref={sectionRef} id="menu" className="py-24 md:py-32">
@@ -192,44 +190,70 @@ export function Menu({ preview = false }: MenuProps) {
           }`}
         >
           <span className="text-sm font-medium tracking-widest uppercase text-primary">
-            Nabidka
+            Nabídka
           </span>
           <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-            Pripravujeme s vasni, podavame s laskou
+            Připravujeme s vášní, podáváme s láskou
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
             {preview
-              ? "Ochutnejte vyber z nasi nabidky a objevte sveho favorita."
-              : "Kompletni napojovy a dezertni listek vcetne aktualnich cen."}
+              ? "Vyberte si sekci, prohlédněte 4 položky a pokračujte na kompletní menu."
+              : "Kompletní nápojový a dezertní lístek včetně aktuálních cen."}
           </p>
         </div>
 
         {preview ? (
           <>
             <div
-              className={`mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-1000 delay-300 ${
+              className={`mt-12 flex flex-wrap justify-center gap-3 transition-all duration-1000 delay-200 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
-              {featuredPreview.map((item, index) => (
+              {previewSections.map((section) => (
+                <button
+                  key={section.id}
+                  type="button"
+                  onClick={() => setActiveCategory(section.id)}
+                  className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
+                    activeCategory === section.id
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
+                >
+                  {section.label}
+                </button>
+              ))}
+            </div>
+
+            <div
+              className={`mt-10 grid sm:grid-cols-2 xl:grid-cols-5 gap-6 transition-all duration-1000 delay-300 ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+            >
+              {previewItems.map((item, index) => (
                 <article
                   key={item.name}
                   className="p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500"
                   style={{ animationDelay: `${index * 80}ms` }}
                 >
-                  <p className="text-xs uppercase tracking-widest text-primary/80">{item.category}</p>
-                  <div className="mt-3 flex justify-between items-start gap-3">
+                  <div className="mt-1 flex justify-between items-start gap-3">
                     <h3 className="font-medium text-lg text-foreground">{item.name}</h3>
                     <span className="text-sm font-semibold text-accent">{item.price}</span>
                   </div>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                 </article>
               ))}
-            </div>
 
-            <div className="mt-12 text-center">
-              <Button asChild size="lg" className="rounded-full px-8">
-                <Link href="/menu">Zobrazit cele menu</Link>
-              </Button>
+              <Link
+                href="/menu"
+                className="rounded-2xl bg-primary text-primary-foreground border border-primary/70 p-6 min-h-[210px] flex flex-col items-center justify-center text-center shadow-lg hover:brightness-110 transition-all duration-300"
+              >
+                <p className="text-sm uppercase tracking-widest text-primary-foreground/85">Kompletní nabídka</p>
+                <h3 className="mt-3 font-serif text-2xl">Zobrazit více</h3>
+                <span className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-foreground/15">
+                  <ArrowRight className="h-5 w-5" />
+                </span>
+              </Link>
             </div>
           </>
         ) : (
@@ -278,7 +302,7 @@ export function Menu({ preview = false }: MenuProps) {
             </div>
 
             <p className="mt-10 text-center text-sm text-muted-foreground">
-              Obsah alergenu a aktualni denni nabidka jsou k dispozici u obsluhy.
+              Obsah alergenů a aktuální denní nabídka jsou k dispozici u obsluhy.
             </p>
           </>
         )}
