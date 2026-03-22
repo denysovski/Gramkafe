@@ -10,7 +10,7 @@ export default function GaleriePage() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h1 className="font-serif text-4xl md:text-6xl text-foreground">Galerie</h1>
           <p className="mt-4 text-lg text-muted-foreground max-w-3xl">
-            Kliknete na fotku pro zvetseni a plynule prochazeni cele galerie.
+            Klikněte na fotku pro zvětšení a plynulé procházení celé galerie.
           </p>
         </div>
       </section>

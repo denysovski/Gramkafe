@@ -8,19 +8,19 @@ import { useEffect, useRef, useState } from "react"
 const testimonials = [
   {
     name: "Klara N.",
-    text: "Miluju zdejsi kavu i personal. Nejlepsi zastavka cestou do prace.",
+    text: "Miluju zdejší kávu i personál. Nejlepší zastávka cestou do práce.",
   },
   {
     name: "Marek T.",
-    text: "Skvela kombinace prijemne atmosfery, dezertu a poctiveho espressa.",
+    text: "Skvělá kombinace příjemné atmosféry, dezertů a poctivého espressa.",
   },
   {
     name: "Eva R.",
-    text: "Vikendove snidane a panini jsou tady top. Vzdy se radi vracime.",
+    text: "Víkendové snídaně a panini jsou tady top. Vždy se rádi vracíme.",
   },
   {
     name: "Daniela P.",
-    text: "Prijemne misto na schuzky i klidne odpoledne. Doporucuji.",
+    text: "Příjemné místo na schůzky i klidné odpoledne. Doporučuji.",
   },
 ]
 
@@ -70,11 +70,11 @@ export function Visit() {
               Kontakt
             </span>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-              Stavte se na kavu i chvili klidu
+              Stavte se na kávu i chvíli klidu
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Najdete nas v centru mesta. At uz se stavite na rychle espresso,
-              schuzku s prateli nebo klidne odpoledne, radi vas privitame.
+              Najdete nás v centru města. Ať už se stavíte na rychlé espresso,
+              schůzku s přáteli nebo klidné odpoledne, rádi vás přivítáme.
             </p>
 
             {/* Info Cards */}
@@ -84,9 +84,9 @@ export function Visit() {
                   <Clock className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Oteviraci doba</h3>
+                  <h3 className="font-medium text-foreground">Otevírací doba</h3>
                   <p className="mt-1 text-muted-foreground">
-                    Otevreno kazdy den do 20:00
+                    Otevřeno každý den do 20:00
                   </p>
                   <p className="text-sm text-muted-foreground">
                     Po - Ne: 8:00 - 20:00
@@ -99,12 +99,12 @@ export function Visit() {
                   <CreditCard className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Cenove rozpeti</h3>
+                  <h3 className="font-medium text-foreground">Cenové rozpětí</h3>
                   <p className="mt-1 text-muted-foreground">
-                    100 - 200 Kc na osobu
+                    100 - 200 Kč na osobu
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Prijimame hotovost i karty
+                    Přijímáme hotovost i karty
                   </p>
                 </div>
               </div>
@@ -116,10 +116,10 @@ export function Visit() {
                 <div>
                   <h3 className="font-medium text-foreground">Lokalita</h3>
                   <p className="mt-1 text-muted-foreground">
-                    V samem srdci mesta
+                    V samém srdci města
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Parkovani v okoli je snadno dostupne
+                    Parkování v okolí je snadno dostupné
                   </p>
                 </div>
               </div>
@@ -171,10 +171,10 @@ export function Visit() {
 
         <div className="mt-16">
           <h3 className="font-serif text-3xl md:text-4xl text-foreground text-center">
-            Co o nas rikaji hoste
+            Co o nás říkají hosté
           </h3>
           <p className="mt-3 text-center text-muted-foreground">
-            Automaticky posouvany vyber recenzi
+            Automaticky posouvaný výběr recenzí
           </p>
 
           <div className="mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card">

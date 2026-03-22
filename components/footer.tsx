@@ -4,7 +4,7 @@ const links = [
   { href: "/menu", label: "Menu" },
   { href: "/galerie", label: "Galerie" },
   { href: "/dorty", label: "Dorty" },
-  { href: "/darkove-poukazy", label: "Darkove poukazy" },
+  { href: "/darkove-poukazy", label: "Dárkové poukazy" },
   { href: "/#visit", label: "Kontakt" },
 ]
 
@@ -28,11 +28,11 @@ export function Footer() {
               Gram kafe
             </Link>
             <p className="mt-2 text-muted-foreground text-sm">
-              Utulne misto pro kavu, dezerty a prijemna setkani
+              Útulné místo pro kávu, dezerty a příjemná setkání
             </p>
             <p className="mt-3 text-sm text-muted-foreground">Po - Ne: 8:00 - 20:00</p>
-            <p className="text-sm text-muted-foreground">Cenove rozpeti: 100 - 200 Kc na osobu</p>
-            <p className="text-sm text-muted-foreground">Olomouc, Ceska republika</p>
+            <p className="text-sm text-muted-foreground">Cenové rozpětí: 100 - 200 Kč na osobu</p>
+            <p className="text-sm text-muted-foreground">Olomouc, Česká republika</p>
           </div>
 
           {/* Links */}
@@ -67,7 +67,7 @@ export function Footer() {
         {/* Copyright */}
         <div className="mt-12 pt-8 border-t border-border/30 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Gram kafe. Vsechna prava vyhrazena.
+            © {new Date().getFullYear()} Gram Kafe. Všechna práva vyhrazena.
           </p>
         </div>
       </div>

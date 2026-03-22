@@ -7,7 +7,7 @@ import { ArrowRight, Beer, Cake, Coffee, GlassWater, Wine } from "lucide-react"
 const categories = [
   {
     id: "sezoni",
-    name: "Sezonni napoje",
+    name: "Sezonní nápoje",
     icon: GlassWater,
     items: [
       { name: "Pernikove latte", description: "Horke latte s pernikovym sirupem", price: "89 Kc" },
@@ -22,7 +22,7 @@ const categories = [
   },
   {
     id: "kava",
-    name: "Kava",
+    name: "Káva",
     icon: Coffee,
     items: [
       { name: "Espresso", description: "8 g kavy, 30 ml vody", price: "60 Kc" },
@@ -42,7 +42,7 @@ const categories = [
   },
   {
     id: "limonady",
-    name: "Netradicni limonady",
+    name: "Netradiční limonády",
     icon: GlassWater,
     items: [
       { name: "Malina a hrebicek", description: "0,4 l", price: "65 Kc" },
@@ -57,7 +57,7 @@ const categories = [
   },
   {
     id: "nealko",
-    name: "Nealkoholicke napoje",
+    name: "Nealkoholické nápoje",
     icon: GlassWater,
     items: [
       { name: "Tocena Kofola", description: "0,3 l / 0,5 l", price: "39 / 55 Kc" },
@@ -74,7 +74,7 @@ const categories = [
   },
   {
     id: "alkohol",
-    name: "Alkoholicke napoje",
+    name: "Alkoholické nápoje",
     icon: Beer,
     items: [
       { name: "F.H. Prager 11 cider", description: "0,33 l", price: "55 Kc" },
@@ -90,7 +90,7 @@ const categories = [
   },
   {
     id: "vina",
-    name: "Vina",
+    name: "Vína",
     icon: Wine,
     items: [
       { name: "Ryzlink vlassky", description: "0,1 l / 0,75 l", price: "40 / 290 Kc" },
@@ -103,7 +103,7 @@ const categories = [
   },
   {
     id: "teple",
-    name: "Horke napoje",
+    name: "Horké nápoje",
     icon: Coffee,
     items: [
       { name: "Ronnefeldt Tea", description: "cerny, zeleny, ovocny, matovy, bylinkovy, jasmim", price: "59 Kc" },
@@ -122,7 +122,7 @@ const categories = [
   },
   {
     id: "sladke",
-    name: "Neco k zakousnuti",
+    name: "Něco k zakousnutí",
     icon: Cake,
     items: [
       { name: "Francouzska palacinka s marmeladou", description: "+ slehacka", price: "79 Kc" },
@@ -214,7 +214,7 @@ export function Menu({ preview = false }: MenuProps) {
                   key={section.id}
                   type="button"
                   onClick={() => setActiveCategory(section.id)}
-                  className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
+                  className={`cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
                     activeCategory === section.id
                       ? "bg-primary text-primary-foreground"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -226,14 +226,15 @@ export function Menu({ preview = false }: MenuProps) {
             </div>
 
             <div
-              className={`mt-10 grid sm:grid-cols-2 xl:grid-cols-5 gap-6 transition-all duration-1000 delay-300 ${
+              key={activeCategory}
+              className={`mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-1000 delay-300 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
             >
               {previewItems.map((item, index) => (
                 <article
                   key={item.name}
-                  className="p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500"
+                  className="p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2"
                   style={{ animationDelay: `${index * 80}ms` }}
                 >
                   <div className="mt-1 flex justify-between items-start gap-3">
@@ -267,7 +268,7 @@ export function Menu({ preview = false }: MenuProps) {
                 <button
                   key={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                  className={`cursor-pointer flex items-center gap-2 px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
                     activeCategory === category.id
                       ? "bg-primary text-primary-foreground"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
@@ -280,6 +281,7 @@ export function Menu({ preview = false }: MenuProps) {
             </div>
 
             <div
+              key={activeCategory + "-items"}
               className={`mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-1000 delay-400 ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
               }`}
@@ -287,7 +289,7 @@ export function Menu({ preview = false }: MenuProps) {
               {activeItems.map((item, index) => (
                 <article
                   key={item.name}
-                  className="group p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500"
+                  className="group p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2"
                   style={{ animationDelay: `${index * 70}ms` }}
                 >
                   <div className="flex justify-between items-start gap-3">

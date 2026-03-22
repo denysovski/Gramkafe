@@ -13,8 +13,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Gram kafe | Vyberova kava, dezerty a utulna atmosfera',
-  description: 'Gram kafe v Olomouci. Vyberova kava, domaci dezerty, sezonni napoje, darkove poukazy a dorty na miru.',
+  title: 'Gram Kafe | Výběrová káva, dezerty a útulná atmosféra',
+  description: 'Gram Kafe v Olomouci. Výběrová káva, domácí dezerty, sezónní nápoje, dárkové poukazy a dorty na míru.',
   icons: {
     icon: [
       {

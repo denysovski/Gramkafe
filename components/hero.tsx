@@ -23,14 +23,14 @@ export function Hero() {
             }`}
           >
             <span className="inline-block mb-6 text-sm font-medium tracking-widest uppercase text-primary">
-              Vitejte v
+              Vítejte v
             </span>
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium leading-tight text-foreground text-balance">
-              Utulnem miste pro skvelou kavu a sladke chvile
+              útulném místě pro skvělou kávu a sladké chvíle
             </h1>
             <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Vyberova kava, domaci dezerty a napoje, ktere si zamilujete.
-              Prijdte zpomalit, odpocinout si a uzit si prijemnou atmosferu.
+              Výběrová káva, domácí dezerty a nápoje, které si zamilujete.
+              Přijďte zpomalit, odpočinout si a užít si příjemnou atmosféru.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Button
@@ -46,7 +46,7 @@ export function Hero() {
                 variant="outline"
                 className="rounded-full border-foreground/20 text-foreground hover:bg-foreground/5 px-8 py-6 text-base transition-all duration-300"
               >
-                <Link href="#visit">Navstivte nas</Link>
+                <Link href="#visit">Navštivte nás</Link>
               </Button>
             </div>
           </div>
@@ -60,7 +60,7 @@ export function Hero() {
             <div className="relative aspect-4/5 w-full overflow-hidden rounded-[2.25rem] border border-border/40 shadow-2xl">
               <Image
                 src="/images/hero-coffee.jpg"
-                alt="Interier kavarny Gram kafe"
+                alt="Interiér kavárny Gram Kafe"
                 fill
                 className="object-cover"
                 priority

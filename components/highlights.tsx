@@ -7,25 +7,25 @@ const highlights = [
   {
     name: "Laskonka a cappuccino",
     description:
-      "Nas oblibeny par - jemny dezert a sametove espresso.",
+      "Náš oblíbený pár - jemný dezert a sametové espresso.",
     image: "https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=900&q=80",
-    tag: "Oblibene",
+    tag: "Oblíbené",
   },
   {
-    name: "Sezonni latte",
-    description: "Jemne korenena sezonna specialita.",
+    name: "Sezónní latte",
+    description: "Jemně kořeněná sezónní specialita.",
     image: "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=80",
-    tag: "Sezona",
+    tag: "Sezóna",
   },
   {
-    name: "Domaci limonady",
-    description: "Svezest, ovoce a bylinky v dokonale kombinaci.",
+    name: "Domácí limonády",
+    description: "Svěžest, ovoce a bylinky v dokonalé kombinaci.",
     image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
-    tag: "Svezest",
+    tag: "Svěžest",
   },
   {
-    name: "Sladke dezerty",
-    description: "Nadypane chuti, ktere si budete chtit dat znovu.",
+    name: "Sladké dezerty",
+    description: "Nadýchané chutě, které si budete chtít dát znovu.",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
     tag: "Sweet",
   },
@@ -66,13 +66,13 @@ export function Highlights() {
           }`}
         >
           <span className="text-sm font-medium tracking-widest uppercase text-primary">
-            Top vyber
+            Top výběr
           </span>
           <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-            Co nasi hoste miluji
+            Co naši hosté milují
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Chute, kvuli kterym se k nam hoste radi vraceji
+            Chutě, kvůli kterým se k nám hosté rádi vracejí
           </p>
         </div>
 
