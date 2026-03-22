@@ -5,7 +5,7 @@ const links = [
   { href: "/galerie", label: "Galerie" },
   { href: "/dorty", label: "Dorty" },
   { href: "/darkove-poukazy", label: "Dárkové poukazy" },
-  { href: "/#visit", label: "Kontakt" },
+  { href: "/kontakt", label: "Kontakt" },
 ]
 
 const socials = [
