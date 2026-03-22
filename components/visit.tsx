@@ -8,23 +8,23 @@ import { useEffect, useRef, useState } from "react"
 const testimonials = [
   {
     name: "Klara N.",
-    text: "Miluju zdejší kávu i personál. Nejlepší zastávka cestou do práce.",
+    text: "Miluju zdejĹˇĂ­ kĂˇvu i personĂˇl. NejlepĹˇĂ­ zastĂˇvka cestou do prĂˇce.",
   },
   {
     name: "Marek T.",
-    text: "Skvělá kombinace příjemné atmosféry, dezertů a poctivého espressa.",
+    text: "SkvÄ›lĂˇ kombinace pĹ™Ă­jemnĂ© atmosfĂ©ry, dezertĹŻ a poctivĂ©ho espressa.",
   },
   {
     name: "Eva R.",
-    text: "Víkendové snídaně a panini jsou tady top. Vždy se rádi vracíme.",
+    text: "VĂ­kendovĂ© snĂ­danÄ› a panini jsou tady top. VĹľdy se rĂˇdi vracĂ­me.",
   },
   {
     name: "Daniela P.",
-    text: "Příjemné místo na schůzky i klidné odpoledne. Doporučuji.",
+    text: "PĹ™Ă­jemnĂ© mĂ­sto na schĹŻzky i klidnĂ© odpoledne. DoporuÄŤuji.",
   },
   {
     name: "Petra S.",
-    text: "Skvělé prostředí, milá obsluha a výborné dezerty. Ráda se vracím.",
+    text: "SkvÄ›lĂ© prostĹ™edĂ­, milĂˇ obsluha a vĂ˝bornĂ© dezerty. RĂˇda se vracĂ­m.",
   },
 ]
 
@@ -74,11 +74,11 @@ export function Visit() {
               Kontakt
             </span>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-              Stavte se na kávu i chvíli klidu
+              Stavte se na kĂˇvu i chvĂ­li klidu
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Najdete nás v centru města. Ať už se stavíte na rychlé espresso,
-              schůzku s přáteli nebo klidné odpoledne, rádi vás přivítáme.
+              Najdete nĂˇs v centru mÄ›sta. AĹĄ uĹľ se stavĂ­te na rychlĂ© espresso,
+              schĹŻzku s pĹ™Ăˇteli nebo klidnĂ© odpoledne, rĂˇdi vĂˇs pĹ™ivĂ­tĂˇme.
             </p>
 
             {/* Info Cards */}
@@ -88,9 +88,9 @@ export function Visit() {
                   <Clock className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Otevírací doba</h3>
+                  <h3 className="font-medium text-foreground">OtevĂ­racĂ­ doba</h3>
                   <p className="mt-1 text-muted-foreground">
-                    Otevřeno každý den do 20:00
+                    OtevĹ™eno kaĹľdĂ˝ den do 20:00
                   </p>
                   <p className="text-sm text-muted-foreground">
                     Po - Ne: 8:00 - 20:00
@@ -103,12 +103,12 @@ export function Visit() {
                   <CreditCard className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Cenové rozpětí</h3>
+                  <h3 className="font-medium text-foreground">CenovĂ© rozpÄ›tĂ­</h3>
                   <p className="mt-1 text-muted-foreground">
-                    100 - 200 Kč na osobu
+                    100 - 200 KÄŤ na osobu
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Přijímáme hotovost i karty
+                    PĹ™ijĂ­mĂˇme hotovost i karty
                   </p>
                 </div>
               </div>
@@ -120,10 +120,10 @@ export function Visit() {
                 <div>
                   <h3 className="font-medium text-foreground">Lokalita</h3>
                   <p className="mt-1 text-muted-foreground">
-                    V samém srdci města
+                    V samĂ©m srdci mÄ›sta
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Parkování v okolí je snadno dostupné
+                    ParkovĂˇnĂ­ v okolĂ­ je snadno dostupnĂ©
                   </p>
                 </div>
               </div>
@@ -163,7 +163,7 @@ export function Visit() {
           >
             <div className="aspect-4/5 lg:aspect-4/5 rounded-3xl overflow-hidden border border-border/50 shadow-lg">
               <iframe
-                title="Mapa Gram kafe"
+                title="Mapa Gram Kafé"
                 src="https://www.google.com/maps?q=Olomouc&output=embed"
                 className="h-full w-full"
                 loading="lazy"
@@ -175,10 +175,10 @@ export function Visit() {
 
         <div className="mt-16">
           <h3 className="font-serif text-3xl md:text-4xl text-foreground text-center">
-            Co o nás říkají hosté
+            Co o nĂˇs Ĺ™Ă­kajĂ­ hostĂ©
           </h3>
           <p className="mt-3 text-center text-muted-foreground">
-            Automaticky posouvaný výběr recenzí
+            Automaticky posouvanĂ˝ vĂ˝bÄ›r recenzĂ­
           </p>
 
           <div className="mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card shadow-sm">
@@ -195,7 +195,7 @@ export function Visit() {
             </div>
           </div>
 
-          <div className="mt-5 flex items-center justify-center gap-2" aria-label="Indikátor recenzí">
+          <div className="mt-5 flex items-center justify-center gap-2" aria-label="IndikĂˇtor recenzĂ­">
             {testimonials.map((item, index) => (
               <button
                 key={item.name}
@@ -204,7 +204,7 @@ export function Visit() {
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   index === activeTestimonial ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-primary/50"
                 }`}
-                aria-label={`Přejít na recenzi ${index + 1}`}
+                aria-label={`PĹ™ejĂ­t na recenzi ${index + 1}`}
               />
             ))}
           </div>

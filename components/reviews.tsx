@@ -5,22 +5,22 @@ import { useEffect, useRef, useState } from "react"
 
 const reviews = [
   {
-    text: "Skvělá atmosféra, výborná káva a laskonka, kterou musíte ochutnat.",
+    text: "SkvÄ›lĂˇ atmosfĂ©ra, vĂ˝bornĂˇ kĂˇva a laskonka, kterou musĂ­te ochutnat.",
     author: "Marie K.",
     rating: 5,
   },
   {
-    text: "Do Gram Kafe chodím pravidelně. Chai latte mě nikdy nezklame.",
-    author: "Tomáš V.",
+    text: "Do Gram Kafé chodĂ­m pravidelnÄ›. Chai latte mÄ› nikdy nezklame.",
+    author: "TomĂˇĹˇ V.",
     rating: 5,
   },
   {
-    text: "Obsluha je vždy milá a káva chutná skvěle. Můj oblíbený podnik.",
+    text: "Obsluha je vĹľdy milĂˇ a kĂˇva chutnĂˇ skvÄ›le. MĹŻj oblĂ­benĂ˝ podnik.",
     author: "Anna M.",
     rating: 5,
   },
   {
-    text: "Ideální místo na schůzku i na práci. Vždy se zdržím déle, než plánuji.",
+    text: "IdeĂˇlnĂ­ mĂ­sto na schĹŻzku i na prĂˇci. VĹľdy se zdrĹľĂ­m dĂ©le, neĹľ plĂˇnuji.",
     author: "Jakub P.",
     rating: 5,
   },
@@ -67,11 +67,11 @@ export function Reviews() {
             </div>
             <span className="font-semibold text-foreground">4.7 / 5</span>
             <span className="text-muted-foreground text-sm">
-              (300+ hodnocení)
+              (300+ hodnocenĂ­)
             </span>
           </div>
           <h2 className="mt-8 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-            Hosté nás doporučují
+            HostĂ© nĂˇs doporuÄŤujĂ­
           </h2>
         </div>
 
@@ -97,7 +97,7 @@ export function Reviews() {
               </div>
               <p className="text-foreground leading-relaxed">{review.text}</p>
               <p className="mt-4 text-sm font-medium text-muted-foreground">
-                — {review.author}
+                â€” {review.author}
               </p>
             </div>
           ))}

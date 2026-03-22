@@ -7,27 +7,27 @@ import { useEffect, useRef, useState } from "react"
 const features = [
   {
     icon: Coffee,
-    title: "Výběrová káva",
+    title: "VĂ˝bÄ›rovĂˇ kĂˇva",
     description:
-      "Pečlivě vybraná zrna, citlivé pražení a precizní příprava.",
+      "PeÄŤlivÄ› vybranĂˇ zrna, citlivĂ© praĹľenĂ­ a preciznĂ­ pĹ™Ă­prava.",
   },
   {
     icon: Heart,
-    title: "Domácí dezerty",
+    title: "DomĂˇcĂ­ dezerty",
     description:
-      "Každý den čerstvě připravené sladkosti z kvalitních surovin.",
+      "KaĹľdĂ˝ den ÄŤerstvÄ› pĹ™ipravenĂ© sladkosti z kvalitnĂ­ch surovin.",
   },
   {
     icon: Sparkles,
-    title: "Speciální nápoje",
+    title: "SpeciĂˇlnĂ­ nĂˇpoje",
     description:
-      "Netradiční limonády, čaje a sezónní speciality, které stojí za ochutnání.",
+      "NetradiÄŤnĂ­ limonĂˇdy, ÄŤaje a sezĂłnnĂ­ speciality, kterĂ© stojĂ­ za ochutnĂˇnĂ­.",
   },
   {
     icon: Leaf,
-    title: "Příjemná atmosféra",
+    title: "PĹ™Ă­jemnĂˇ atmosfĂ©ra",
     description:
-      "Místo, kde si odpočinete, zpomalíte a užijete si přítomný okamžik.",
+      "MĂ­sto, kde si odpoÄŤinete, zpomalĂ­te a uĹľijete si pĹ™Ă­tomnĂ˝ okamĹľik.",
   },
 ]
 
@@ -71,7 +71,7 @@ export function About() {
             <div className="aspect-4/5 relative rounded-3xl overflow-hidden">
               <Image
                 src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80"
-                alt="Útulný interiér kavárny"
+                alt="ĂštulnĂ˝ interiĂ©r kavĂˇrny"
                 fill
                 className="object-cover"
               />
@@ -88,20 +88,20 @@ export function About() {
             }`}
           >
             <span className="text-sm font-medium tracking-widest uppercase text-primary">
-              Náš příběh
+              NĂˇĹˇ pĹ™Ă­bÄ›h
             </span>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-              Místo, kde má každý šálek svůj příběh
+              MĂ­sto, kde mĂˇ kaĹľdĂ˝ ĹˇĂˇlek svĹŻj pĹ™Ă­bÄ›h
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              V Gram Kafe věříme na jednoduché radosti: dobře připravenou kávu,
-              poctivý dezert a příjemnou společnost. Jsme místo, kde se dá na
-              chvíli vypnout od každodenního ruchu.
+              V Gram Kafé vÄ›Ĺ™Ă­me na jednoduchĂ© radosti: dobĹ™e pĹ™ipravenou kĂˇvu,
+              poctivĂ˝ dezert a pĹ™Ă­jemnou spoleÄŤnost. Jsme mĂ­sto, kde se dĂˇ na
+              chvĂ­li vypnout od kaĹľdodennĂ­ho ruchu.
             </p>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              Nabízíme široký výběr nápojů od klasického espressa až po sezónní
-              speciality a domácí limonády. Každé ráno navíc připravujeme
-              čerstvé dezerty, které se skvěle hodí ke každému setkání.
+              NabĂ­zĂ­me ĹˇirokĂ˝ vĂ˝bÄ›r nĂˇpojĹŻ od klasickĂ©ho espressa aĹľ po sezĂłnnĂ­
+              speciality a domĂˇcĂ­ limonĂˇdy. KaĹľdĂ© rĂˇno navĂ­c pĹ™ipravujeme
+              ÄŤerstvĂ© dezerty, kterĂ© se skvÄ›le hodĂ­ ke kaĹľdĂ©mu setkĂˇnĂ­.
             </p>
 
             {/* Features Grid */}

@@ -7,33 +7,33 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react"
 const images = [
   {
     src: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Latte art zblízka",
-    caption: "Precizní latte art každý den",
+    alt: "Latte art zblĂ­zka",
+    caption: "PreciznĂ­ latte art kaĹľdĂ˝ den",
   },
   {
     src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
-    alt: "Barista připravuje espresso",
-    caption: "Výběrová zrna a poctivá příprava",
+    alt: "Barista pĹ™ipravuje espresso",
+    caption: "VĂ˝bÄ›rovĂˇ zrna a poctivĂˇ pĹ™Ă­prava",
   },
   {
     src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
-    alt: "Interiér kavárny",
-    caption: "Útulný interiér Gram Kafe",
+    alt: "InteriĂ©r kavĂˇrny",
+    caption: "ĂštulnĂ˝ interiĂ©r Gram Kafé",
   },
   {
     src: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80",
-    alt: "Šálek horké kávy",
-    caption: "Místo, kde se zpomaluje",
+    alt: "Ĺ Ăˇlek horkĂ© kĂˇvy",
+    caption: "MĂ­sto, kde se zpomaluje",
   },
   {
     src: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80",
-    alt: "Káva a dezert",
-    caption: "Káva a sladké potěšení",
+    alt: "KĂˇva a dezert",
+    caption: "KĂˇva a sladkĂ© potÄ›ĹˇenĂ­",
   },
   {
     src: "https://images.unsplash.com/photo-1461988091159-192b6df7054f?auto=format&fit=crop&w=1200&q=80",
-    alt: "Posezení venku před kavárnou",
-    caption: "Příjemné posezení i venku",
+    alt: "PosezenĂ­ venku pĹ™ed kavĂˇrnou",
+    caption: "PĹ™Ă­jemnĂ© posezenĂ­ i venku",
   },
 ]
 
@@ -89,7 +89,7 @@ export function Gallery() {
             Galerie
           </span>
           <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-            Náhled do světa Gram Kafe
+            NĂˇhled do svÄ›ta Gram Kafé
           </h2>
         </div>
 
@@ -137,7 +137,7 @@ export function Gallery() {
             type="button"
             onClick={() => setActiveIndex(null)}
             className="absolute top-4 right-4 md:top-8 md:right-8 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-            aria-label="Zavřít náhled"
+            aria-label="ZavĹ™Ă­t nĂˇhled"
           >
             <X className="h-5 w-5" />
           </button>
@@ -150,7 +150,7 @@ export function Gallery() {
               )
             }
             className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-            aria-label="Předchozí obrázek"
+            aria-label="PĹ™edchozĂ­ obrĂˇzek"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
@@ -161,7 +161,7 @@ export function Gallery() {
               setActiveIndex((prev) => (prev === null ? 0 : (prev + 1) % images.length))
             }
             className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-            aria-label="Další obrázek"
+            aria-label="DalĹˇĂ­ obrĂˇzek"
           >
             <ChevronRight className="h-6 w-6" />
           </button>

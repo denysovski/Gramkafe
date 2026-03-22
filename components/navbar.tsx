@@ -6,11 +6,11 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { href: "/#about", label: "O nás" },
+  { href: "/#about", label: "O nĂˇs" },
   { href: "/menu", label: "Menu" },
   { href: "/galerie", label: "Galerie" },
   { href: "/dorty", label: "Dorty" },
-  { href: "/darkove-poukazy", label: "Dárkové poukazy" },
+  { href: "/darkove-poukazy", label: "DĂˇrkovĂ© poukazy" },
   { href: "/kontakt", label: "Kontakt" },
 ]
 
@@ -40,7 +40,7 @@ export function Navbar() {
             href="/"
             className="font-serif text-2xl font-semibold tracking-tight text-foreground"
           >
-            Gram kafe
+            Gram Kafé
           </Link>
 
           {/* Desktop Navigation */}

@@ -5,13 +5,13 @@ const links = [
   { href: "/menu", label: "Menu" },
   { href: "/galerie", label: "Galerie" },
   { href: "/dorty", label: "Dorty" },
-  { href: "/darkove-poukazy", label: "Dárkové poukazy" },
+  { href: "/darkove-poukazy", label: "DĂˇrkovĂ© poukazy" },
   { href: "/kontakt", label: "Kontakt" },
 ]
 
 const socials = [
-  { href: "https://facebook.com", label: "Facebook", icon: Facebook },
-  { href: "https://instagram.com", label: "Instagram", icon: Instagram },
+  { href: "https://www.facebook.com/p/Gram-kaf%C3%A9-T%C5%99e%C5%A1%C5%A5-100046894040066/", label: "Facebook", icon: Facebook },
+  { href: "https://www.instagram.com/gramkafe/", label: "Instagram", icon: Instagram },
   { href: "mailto:gramkafe@seznam.cz", label: "Email", icon: Mail },
 ]
 
@@ -25,10 +25,10 @@ export function Footer() {
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm">
                 <Coffee className="h-5 w-5" />
               </span>
-              Gram kafe
+              Gram KafĂ©
             </Link>
             <p className="mt-3 text-sm text-muted-foreground max-w-sm">
-              Útulné místo pro výběrovou kávu, dezerty a příjemná setkání v centru Olomouce.
+              ĂštulnĂ© mĂ­sto pro vĂ˝bÄ›rovou kĂˇvu, dezerty a pĹ™Ă­jemnĂˇ setkĂˇnĂ­ v centru Olomouce.
             </p>
             <a
               href="tel:+420000000000"
@@ -58,7 +58,7 @@ export function Footer() {
             <div className="rounded-2xl border border-border/60 bg-card p-4">
               <p className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
                 <Clock3 className="h-4 w-4 text-primary" />
-                Otevírací doba
+                OtevĂ­racĂ­ doba
               </p>
               <p className="mt-2 text-sm text-muted-foreground">Po-Ne: 08:00-20:00</p>
             </div>
@@ -66,9 +66,9 @@ export function Footer() {
             <div className="rounded-2xl border border-border/60 bg-card p-4">
               <p className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
                 <CreditCard className="h-4 w-4 text-primary" />
-                Cenové rozpětí
+                CenovĂ© rozpÄ›tĂ­
               </p>
-              <p className="mt-2 text-sm text-muted-foreground">100-200 Kč na osobu</p>
+              <p className="mt-2 text-sm text-muted-foreground">100-200 KÄŤ na osobu</p>
             </div>
 
             <div className="rounded-2xl border border-border/60 bg-card p-4">
@@ -76,7 +76,7 @@ export function Footer() {
                 <MapPin className="h-4 w-4 text-primary" />
                 Lokalita
               </p>
-              <p className="mt-2 text-sm text-muted-foreground">Olomouc, Česká republika</p>
+              <p className="mt-2 text-sm text-muted-foreground">Olomouc, ÄŚeskĂˇ republika</p>
             </div>
 
             <div className="pt-2 flex items-center gap-3">
@@ -98,7 +98,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border/30 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Gram Kafe. Všechna práva vyhrazena.
+            Â© {new Date().getFullYear()} Gram KafĂ©. VĹˇechna prĂˇva vyhrazena.
           </p>
         </div>
       </div>
