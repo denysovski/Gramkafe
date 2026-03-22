@@ -67,11 +67,11 @@ export function Reviews() {
             </div>
             <span className="font-semibold text-foreground">4.7 / 5</span>
             <span className="text-muted-foreground text-sm">
-              (300+ hodnocenĂ­)
+              (300+ hodnocení)
             </span>
           </div>
           <h2 className="mt-8 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-            HostĂ© nĂˇs doporuÄŤujĂ­
+            Hosté nás doporučují
           </h2>
         </div>
 
@@ -97,7 +97,7 @@ export function Reviews() {
               </div>
               <p className="text-foreground leading-relaxed">{review.text}</p>
               <p className="mt-4 text-sm font-medium text-muted-foreground">
-                â€” {review.author}
+                — {review.author}
               </p>
             </div>
           ))}

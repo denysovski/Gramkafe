@@ -40,6 +40,8 @@ const images = [
 export function Gallery() {
   const [isVisible, setIsVisible] = useState(false)
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
+  const [renderedIndex, setRenderedIndex] = useState<number | null>(null)
+  const [isLightboxVisible, setIsLightboxVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -61,13 +63,13 @@ export function Gallery() {
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (activeIndex === null) return
-      if (event.key === "Escape") setActiveIndex(null)
+      if (renderedIndex === null) return
+      if (event.key === "Escape") setIsLightboxVisible(false)
       if (event.key === "ArrowRight") {
-        setActiveIndex((prev) => (prev === null ? 0 : (prev + 1) % images.length))
+        setRenderedIndex((prev) => (prev === null ? 0 : (prev + 1) % images.length))
       }
       if (event.key === "ArrowLeft") {
-        setActiveIndex((prev) =>
+        setRenderedIndex((prev) =>
           prev === null ? 0 : (prev - 1 + images.length) % images.length
         )
       }
@@ -75,7 +77,34 @@ export function Gallery() {
 
     window.addEventListener("keydown", handleKeyDown)
     return () => window.removeEventListener("keydown", handleKeyDown)
+  }, [renderedIndex])
+
+  useEffect(() => {
+    if (activeIndex === null) return
+    setRenderedIndex(activeIndex)
+    const enterTimer = window.setTimeout(() => setIsLightboxVisible(true), 10)
+    return () => window.clearTimeout(enterTimer)
   }, [activeIndex])
+
+  useEffect(() => {
+    if (isLightboxVisible) return
+    if (renderedIndex === null) return
+
+    const closeTimer = window.setTimeout(() => {
+      setActiveIndex(null)
+      setRenderedIndex(null)
+    }, 240)
+
+    return () => window.clearTimeout(closeTimer)
+  }, [isLightboxVisible, renderedIndex])
+
+  const openLightbox = (index: number) => {
+    setActiveIndex(index)
+  }
+
+  const closeLightbox = () => {
+    setIsLightboxVisible(false)
+  }
 
   return (
     <section ref={sectionRef} id="gallery" className="py-24 md:py-32 bg-secondary/30">
@@ -89,7 +118,7 @@ export function Gallery() {
             Galerie
           </span>
           <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-            NĂˇhled do svÄ›ta Gram Kafé
+            Náhled do světa Gram Kafé
           </h2>
         </div>
 
@@ -98,7 +127,7 @@ export function Gallery() {
             <button
               key={image.src}
               type="button"
-              onClick={() => setActiveIndex(index)}
+              onClick={() => openLightbox(index)}
               className={`group relative overflow-hidden rounded-2xl ${
                 index === 0 || index === 5 ? "md:row-span-2" : ""
               } transition-all duration-700 ${
@@ -131,13 +160,18 @@ export function Gallery() {
         </div>
       </div>
 
-      {activeIndex !== null && (
-        <div className="fixed inset-0 z-70 bg-black/85 backdrop-blur-sm p-4 md:p-10">
+      {renderedIndex !== null && (
+        <div
+          className={`fixed inset-0 z-70 p-4 md:p-10 transition-all duration-300 ${
+            isLightboxVisible ? "bg-black/85 opacity-100 backdrop-blur-sm" : "bg-black/0 opacity-0"
+          }`}
+          onClick={closeLightbox}
+        >
           <button
             type="button"
-            onClick={() => setActiveIndex(null)}
+            onClick={closeLightbox}
             className="absolute top-4 right-4 md:top-8 md:right-8 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-            aria-label="ZavĹ™Ă­t nĂˇhled"
+            aria-label="Zavřít náhled"
           >
             <X className="h-5 w-5" />
           </button>
@@ -145,12 +179,12 @@ export function Gallery() {
           <button
             type="button"
             onClick={() =>
-              setActiveIndex((prev) =>
+              setRenderedIndex((prev) =>
                 prev === null ? 0 : (prev - 1 + images.length) % images.length
               )
             }
             className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-            aria-label="PĹ™edchozĂ­ obrĂˇzek"
+            aria-label="Předchozí obrázek"
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
@@ -158,24 +192,29 @@ export function Gallery() {
           <button
             type="button"
             onClick={() =>
-              setActiveIndex((prev) => (prev === null ? 0 : (prev + 1) % images.length))
+              setRenderedIndex((prev) => (prev === null ? 0 : (prev + 1) % images.length))
             }
             className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 p-2 text-white hover:bg-white/20"
-            aria-label="DalĹˇĂ­ obrĂˇzek"
+            aria-label="Další obrázek"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
 
           <div className="mx-auto flex h-full max-w-5xl items-center justify-center">
-            <div className="relative h-[75vh] w-full overflow-hidden rounded-2xl border border-white/15">
+            <div
+              className={`relative h-[75vh] w-full overflow-hidden rounded-2xl border border-white/15 transition-all duration-300 ${
+                isLightboxVisible ? "scale-100 opacity-100" : "scale-95 opacity-0"
+              }`}
+              onClick={(event) => event.stopPropagation()}
+            >
               <Image
-                src={images[activeIndex].src}
-                alt={images[activeIndex].alt}
+                src={images[renderedIndex].src}
+                alt={images[renderedIndex].alt}
                 fill
                 className="object-cover"
               />
               <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 to-transparent p-4 md:p-6">
-                <p className="text-white text-sm md:text-base">{images[activeIndex].caption}</p>
+                <p className="text-white text-sm md:text-base">{images[renderedIndex].caption}</p>
               </div>
             </div>
           </div>

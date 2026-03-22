@@ -74,11 +74,11 @@ export function Visit() {
               Kontakt
             </span>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-              Stavte se na kĂˇvu i chvĂ­li klidu
+              Stavte se na kávu i chvíli klidu
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Najdete nĂˇs v centru mÄ›sta. AĹĄ uĹľ se stavĂ­te na rychlĂ© espresso,
-              schĹŻzku s pĹ™Ăˇteli nebo klidnĂ© odpoledne, rĂˇdi vĂˇs pĹ™ivĂ­tĂˇme.
+              Najdete nás přímo v Třešti. Ať už se stavíte na rychlé espresso,
+              schůzku s přáteli nebo klidné odpoledne, rádi vás přivítáme.
             </p>
 
             {/* Info Cards */}
@@ -88,9 +88,9 @@ export function Visit() {
                   <Clock className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">OtevĂ­racĂ­ doba</h3>
+                  <h3 className="font-medium text-foreground">Otevírací doba</h3>
                   <p className="mt-1 text-muted-foreground">
-                    OtevĹ™eno kaĹľdĂ˝ den do 20:00
+                    Otevřeno každý den do 20:00
                   </p>
                   <p className="text-sm text-muted-foreground">
                     Po - Ne: 8:00 - 20:00
@@ -103,12 +103,12 @@ export function Visit() {
                   <CreditCard className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">CenovĂ© rozpÄ›tĂ­</h3>
+                  <h3 className="font-medium text-foreground">Cenové rozpětí</h3>
                   <p className="mt-1 text-muted-foreground">
-                    100 - 200 KÄŤ na osobu
+                    100 - 200 Kč na osobu
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    PĹ™ijĂ­mĂˇme hotovost i karty
+                    Přijímáme hotovost i karty
                   </p>
                 </div>
               </div>
@@ -120,10 +120,10 @@ export function Visit() {
                 <div>
                   <h3 className="font-medium text-foreground">Lokalita</h3>
                   <p className="mt-1 text-muted-foreground">
-                    V samĂ©m srdci mÄ›sta
+                    Nádražní 448/2, 589 01 Třešť
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    ParkovĂˇnĂ­ v okolĂ­ je snadno dostupnĂ©
+                    Parkování v okolí je snadno dostupné
                   </p>
                 </div>
               </div>
@@ -164,21 +164,31 @@ export function Visit() {
             <div className="aspect-4/5 lg:aspect-4/5 rounded-3xl overflow-hidden border border-border/50 shadow-lg">
               <iframe
                 title="Mapa Gram Kafé"
-                src="https://www.google.com/maps?q=Olomouc&output=embed"
+                src="https://www.google.com/maps?q=N%C3%A1dra%C5%BEn%C3%AD%20448%2F2%2C%20589%2001%20T%C5%99e%C5%A1%C5%A5&output=embed"
                 className="h-full w-full"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+            <p className="mt-3 text-sm text-muted-foreground">
+              <Link
+                href="https://maps.google.com/?q=N%C3%A1dra%C5%BEn%C3%AD%20448%2F2%2C%20589%2001%20T%C5%99e%C5%A1%C5%A5"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground transition-colors duration-300"
+              >
+                Otevřít v Google Maps
+              </Link>
+            </p>
           </div>
         </div>
 
         <div className="mt-16">
           <h3 className="font-serif text-3xl md:text-4xl text-foreground text-center">
-            Co o nĂˇs Ĺ™Ă­kajĂ­ hostĂ©
+            Co o nás říkají hosté
           </h3>
           <p className="mt-3 text-center text-muted-foreground">
-            Automaticky posouvanĂ˝ vĂ˝bÄ›r recenzĂ­
+            Automaticky posouvaný výběr recenzí
           </p>
 
           <div className="mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card shadow-sm">
@@ -195,7 +205,7 @@ export function Visit() {
             </div>
           </div>
 
-          <div className="mt-5 flex items-center justify-center gap-2" aria-label="IndikĂˇtor recenzĂ­">
+          <div className="mt-5 flex items-center justify-center gap-2" aria-label="Indikátor recenzí">
             {testimonials.map((item, index) => (
               <button
                 key={item.name}
@@ -204,7 +214,7 @@ export function Visit() {
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   index === activeTestimonial ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-primary/50"
                 }`}
-                aria-label={`PĹ™ejĂ­t na recenzi ${index + 1}`}
+                aria-label={`Přejít na recenzi ${index + 1}`}
               />
             ))}
           </div>
