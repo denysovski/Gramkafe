@@ -13,8 +13,8 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Gram kafé | Premium Coffee & Homemade Desserts',
-  description: 'Your cozy place for premium coffee, homemade desserts, and unique signature drinks. Experience the warmth of Gram kafé.',
+  title: 'Gram kafe | Vyberova kava, dezerty a utulna atmosfera',
+  description: 'Gram kafe v Olomouci. Vyberova kava, domaci dezerty, sezonni napoje, darkove poukazy a dorty na miru.',
   icons: {
     icon: [
       {
@@ -40,7 +40,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="cs">
       <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
       </body>

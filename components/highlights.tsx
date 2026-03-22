@@ -5,29 +5,29 @@ import { useEffect, useRef, useState } from "react"
 
 const highlights = [
   {
-    name: "Laskonka & Cappuccino",
+    name: "Laskonka a cappuccino",
     description:
-      "Our signature pairing—delicate meringue meets velvety espresso",
-    image: "/images/laskonka.jpg",
-    tag: "Fan Favorite",
+      "Nas oblibeny par - jemny dezert a sametove espresso.",
+    image: "https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=900&q=80",
+    tag: "Oblibene",
   },
   {
-    name: "Pumpkin Latte",
-    description: "Seasonal spiced perfection with homemade pumpkin purée",
-    image: "/images/pumpkin-latte.jpg",
-    tag: "Seasonal",
+    name: "Sezonni latte",
+    description: "Jemne korenena sezonna specialita.",
+    image: "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=80",
+    tag: "Sezona",
   },
   {
-    name: "Fresh Lemonades",
-    description: "Hand-squeezed daily with fresh herbs and natural sweeteners",
-    image: "/images/lemonade.jpg",
-    tag: "Refreshing",
+    name: "Domaci limonady",
+    description: "Svezest, ovoce a bylinky v dokonale kombinaci.",
+    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
+    tag: "Svezest",
   },
   {
-    name: "Artisan Ice Cream",
-    description: "Creamy, dreamy, and made with local ingredients",
-    image: "/images/ice-cream.jpg",
-    tag: "Sweet Treat",
+    name: "Sladke dezerty",
+    description: "Nadypane chuti, ktere si budete chtit dat znovu.",
+    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
+    tag: "Sweet",
   },
 ]
 
@@ -66,13 +66,13 @@ export function Highlights() {
           }`}
         >
           <span className="text-sm font-medium tracking-widest uppercase text-primary">
-            Popular Picks
+            Top vyber
           </span>
           <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-            What our guests love
+            Co nasi hoste miluji
           </h2>
           <p className="mt-6 text-lg text-muted-foreground">
-            Discover the flavors that keep our guests coming back
+            Chute, kvuli kterym se k nam hoste radi vraceji
           </p>
         </div>
 
@@ -88,14 +88,14 @@ export function Highlights() {
               }`}
               style={{ transitionDelay: `${300 + index * 150}ms` }}
             >
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden">
+              <div className="relative aspect-3/4 rounded-3xl overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-linear-to-t from-foreground/60 via-transparent to-transparent" />
 
                 {/* Tag */}
                 <span className="absolute top-4 left-4 px-3 py-1 bg-card/90 backdrop-blur-sm rounded-full text-xs font-medium text-foreground">

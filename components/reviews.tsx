@@ -5,22 +5,22 @@ import { useEffect, useRef, useState } from "react"
 
 const reviews = [
   {
-    text: "Amazing desserts and unique drinks selection. The laskonka is a must-try!",
-    author: "Maria K.",
+    text: "Skvela atmosfera, vyborna kava a laskonka, kterou musite ochutnat.",
+    author: "Marie K.",
     rating: 5,
   },
   {
-    text: "Perfect cozy stop on a cold morning. The chai latte warms my soul every time.",
+    text: "Do Gram kafe chodim pravidelne. Chai latte me nikdy nezklame.",
     author: "Tomáš V.",
     rating: 5,
   },
   {
-    text: "Great coffee and friendly staff. This has become my daily ritual spot.",
+    text: "Obsluha je vzdy mila a kava chutna skvele. Muj oblibeny podnik.",
     author: "Anna M.",
     rating: 5,
   },
   {
-    text: "The atmosphere is so relaxing. I come here to work and always stay longer than planned.",
+    text: "Idealni misto na schuzku i na praci. Vzdy se zdrzim dele, nez planuji.",
     author: "Jakub P.",
     rating: 5,
   },
@@ -67,11 +67,11 @@ export function Reviews() {
             </div>
             <span className="font-semibold text-foreground">4.7 / 5</span>
             <span className="text-muted-foreground text-sm">
-              (300+ reviews)
+              (300+ hodnoceni)
             </span>
           </div>
           <h2 className="mt-8 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-            Loved by our guests
+            Hoste nas doporucuji
           </h2>
         </div>
 

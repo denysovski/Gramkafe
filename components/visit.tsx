@@ -5,8 +5,28 @@ import { Button } from "@/components/ui/button"
 import { Clock, MapPin, CreditCard } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
+const testimonials = [
+  {
+    name: "Klara N.",
+    text: "Miluju zdejsi kavu i personal. Nejlepsi zastavka cestou do prace.",
+  },
+  {
+    name: "Marek T.",
+    text: "Skvela kombinace prijemne atmosfery, dezertu a poctiveho espressa.",
+  },
+  {
+    name: "Eva R.",
+    text: "Vikendove snidane a panini jsou tady top. Vzdy se radi vracime.",
+  },
+  {
+    name: "Daniela P.",
+    text: "Prijemne misto na schuzky i klidne odpoledne. Doporucuji.",
+  },
+]
+
 export function Visit() {
   const [isVisible, setIsVisible] = useState(false)
+  const [activeTestimonial, setActiveTestimonial] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -26,6 +46,14 @@ export function Visit() {
     return () => observer.disconnect()
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
+    }, 3000)
+
+    return () => clearInterval(timer)
+  }, [])
+
   return (
     <section ref={sectionRef} id="visit" className="py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -39,59 +67,59 @@ export function Visit() {
             }`}
           >
             <span className="text-sm font-medium tracking-widest uppercase text-primary">
-              Visit Us
+              Kontakt
             </span>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-              We would love to see you
+              Stavte se na kavu i chvili klidu
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Drop by for your daily dose of coffee, a sweet escape, or simply
-              a cozy corner to relax. Our doors are always open.
+              Najdete nas v centru mesta. At uz se stavite na rychle espresso,
+              schuzku s prateli nebo klidne odpoledne, radi vas privitame.
             </p>
 
             {/* Info Cards */}
             <div className="mt-10 space-y-4">
               <div className="flex items-start gap-4 p-5 bg-card rounded-2xl border border-border/50">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                   <Clock className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Opening Hours</h3>
+                  <h3 className="font-medium text-foreground">Oteviraci doba</h3>
                   <p className="mt-1 text-muted-foreground">
-                    Open daily until 20:00
+                    Otevreno kazdy den do 20:00
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Mon – Sun: 8:00 – 20:00
+                    Po - Ne: 8:00 - 20:00
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 p-5 bg-card rounded-2xl border border-border/50">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                   <CreditCard className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Price Range</h3>
+                  <h3 className="font-medium text-foreground">Cenove rozpeti</h3>
                   <p className="mt-1 text-muted-foreground">
-                    100–200 Kč per person
+                    100 - 200 Kc na osobu
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Cash and cards accepted
+                    Prijimame hotovost i karty
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start gap-4 p-5 bg-card rounded-2xl border border-border/50">
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                   <MapPin className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-foreground">Location</h3>
+                  <h3 className="font-medium text-foreground">Lokalita</h3>
                   <p className="mt-1 text-muted-foreground">
-                    Find us in the heart of the city
+                    V samem srdci mesta
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    Easy parking nearby
+                    Parkovani v okoli je snadno dostupne
                   </p>
                 </div>
               </div>
@@ -103,7 +131,7 @@ export function Visit() {
                 asChild
                 className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-8"
               >
-                <Link href="#menu">View Menu</Link>
+                <Link href="/menu">Zobrazit menu</Link>
               </Button>
               <Button
                 asChild
@@ -111,17 +139,17 @@ export function Visit() {
                 className="rounded-full border-foreground/20 text-foreground hover:bg-foreground/5 px-8"
               >
                 <Link
-                  href="https://facebook.com"
+                  href="mailto:gramkafe@seznam.cz"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Facebook
+                  gramkafe@seznam.cz
                 </Link>
               </Button>
             </div>
           </div>
 
-          {/* Map Placeholder */}
+          {/* Map */}
           <div
             className={`transition-all duration-1000 delay-300 ${
               isVisible
@@ -129,33 +157,39 @@ export function Visit() {
                 : "opacity-0 translate-x-12"
             }`}
           >
-            <div className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden bg-secondary border border-border/50">
-              <div className="w-full h-full flex items-center justify-center">
-                <div className="text-center p-8">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-                    <MapPin className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="font-serif text-xl font-medium text-foreground">
-                    Find Us Here
-                  </h3>
-                  <p className="mt-2 text-muted-foreground">
-                    Interactive map coming soon
+            <div className="aspect-4/5 lg:aspect-4/5 rounded-3xl overflow-hidden border border-border/50 shadow-lg">
+              <iframe
+                title="Mapa Gram kafe"
+                src="https://www.google.com/maps?q=Olomouc&output=embed"
+                className="h-full w-full"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <h3 className="font-serif text-3xl md:text-4xl text-foreground text-center">
+            Co o nas rikaji hoste
+          </h3>
+          <p className="mt-3 text-center text-muted-foreground">
+            Automaticky posouvany vyber recenzi
+          </p>
+
+          <div className="mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card">
+            <div
+              className="flex transition-transform duration-700 ease-out"
+              style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
+            >
+              {testimonials.map((item) => (
+                <article key={item.name} className="w-full shrink-0 p-8 md:p-10">
+                  <p className="text-lg md:text-xl text-foreground leading-relaxed">
+                    \"{item.text}\"
                   </p>
-                  <Button
-                    asChild
-                    variant="link"
-                    className="mt-4 text-primary"
-                  >
-                    <Link
-                      href="https://maps.google.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      Open in Google Maps
-                    </Link>
-                  </Button>
-                </div>
-              </div>
+                  <p className="mt-4 text-sm uppercase tracking-widest text-primary">{item.name}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>

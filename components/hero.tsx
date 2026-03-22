@@ -23,14 +23,14 @@ export function Hero() {
             }`}
           >
             <span className="inline-block mb-6 text-sm font-medium tracking-widest uppercase text-primary">
-              Welcome to
+              Vitejte v
             </span>
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium leading-tight text-foreground text-balance">
-              Your cozy place for coffee & sweet moments
+              Utulnem miste pro skvelou kavu a sladke chvile
             </h1>
             <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              Premium coffee, homemade desserts, and signature drinks crafted
-              with love in a warm, inviting atmosphere.
+              Vyberova kava, domaci dezerty a napoje, ktere si zamilujete.
+              Prijdte zpomalit, odpocinout si a uzit si prijemnou atmosferu.
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4">
               <Button
@@ -38,7 +38,7 @@ export function Hero() {
                 size="lg"
                 className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base transition-all duration-300 hover:scale-105"
               >
-                <Link href="#menu">View Menu</Link>
+                <Link href="/menu">Zobrazit menu</Link>
               </Button>
               <Button
                 asChild
@@ -46,7 +46,7 @@ export function Hero() {
                 variant="outline"
                 className="rounded-full border-foreground/20 text-foreground hover:bg-foreground/5 px-8 py-6 text-base transition-all duration-300"
               >
-                <Link href="#visit">Visit Us</Link>
+                <Link href="#visit">Navstivte nas</Link>
               </Button>
             </div>
           </div>
@@ -57,15 +57,15 @@ export function Hero() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.25rem] border border-border/40 shadow-2xl">
+            <div className="relative aspect-4/5 w-full overflow-hidden rounded-[2.25rem] border border-border/40 shadow-2xl">
               <Image
                 src="/images/hero-coffee.jpg"
-                alt="Coffee shop interior and bar setup"
+                alt="Interier kavarny Gram kafe"
                 fill
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-foreground/20 via-transparent to-transparent" />
             </div>
           </div>
         </div>

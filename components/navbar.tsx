@@ -6,11 +6,12 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { href: "#about", label: "About" },
-  { href: "#menu", label: "Menu" },
-  { href: "#highlights", label: "Highlights" },
-  { href: "#gallery", label: "Gallery" },
-  { href: "#visit", label: "Visit Us" },
+  { href: "/#about", label: "O nas" },
+  { href: "/menu", label: "Menu" },
+  { href: "/galerie", label: "Galerie" },
+  { href: "/dorty", label: "Dorty" },
+  { href: "/darkove-poukazy", label: "Darkove poukazy" },
+  { href: "/#visit", label: "Kontakt" },
 ]
 
 export function Navbar() {
@@ -39,7 +40,7 @@ export function Navbar() {
             href="/"
             className="font-serif text-2xl font-semibold tracking-tight text-foreground"
           >
-            Gram kafé
+            Gram kafe
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,7 +58,7 @@ export function Navbar() {
               asChild
               className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300"
             >
-              <Link href="#menu">View Menu</Link>
+              <Link href="/menu">Zobrazit menu</Link>
             </Button>
           </div>
 
@@ -92,8 +93,8 @@ export function Navbar() {
               asChild
               className="w-fit rounded-full bg-primary text-primary-foreground hover:bg-primary/90"
             >
-              <Link href="#menu" onClick={() => setIsMobileMenuOpen(false)}>
-                View Menu
+              <Link href="/menu" onClick={() => setIsMobileMenuOpen(false)}>
+                Zobrazit menu
               </Link>
             </Button>
           </div>

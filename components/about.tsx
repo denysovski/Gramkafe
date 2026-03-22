@@ -7,27 +7,27 @@ import { useEffect, useRef, useState } from "react"
 const features = [
   {
     icon: Coffee,
-    title: "Premium Coffee",
+    title: "Vyberova kava",
     description:
-      "Carefully sourced beans, expertly roasted and brewed to perfection.",
+      "Peclive vybrana zrna, citlive prazeni a precizni priprava.",
   },
   {
     icon: Heart,
-    title: "Homemade Desserts",
+    title: "Domaci dezerty",
     description:
-      "Freshly baked treats made daily with quality ingredients and love.",
+      "Kazdy den cerstve pripravene sladkosti z kvalitnich surovin.",
   },
   {
     icon: Sparkles,
-    title: "Signature Drinks",
+    title: "Specialni napoje",
     description:
-      "Unique lemonades, teas, and specialty drinks you won't find elsewhere.",
+      "Netradicni limonady, caje a sezonni speciality, ktere stoji za ochutnani.",
   },
   {
     icon: Leaf,
-    title: "Cozy Atmosphere",
+    title: "Prijemna atmosfera",
     description:
-      "A warm, welcoming space where you can relax and enjoy the moment.",
+      "Misto, kde si odpocinete, zpomalite a uzijete si pritomny okamzik.",
   },
 ]
 
@@ -68,10 +68,10 @@ export function About() {
                 : "opacity-0 -translate-x-12"
             }`}
           >
-            <div className="aspect-[4/5] relative rounded-3xl overflow-hidden">
+            <div className="aspect-4/5 relative rounded-3xl overflow-hidden">
               <Image
-                src="/images/interior.jpg"
-                alt="Cozy interior of Gram kafé"
+                src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80"
+                alt="Utulny interier kavarny"
                 fill
                 className="object-cover"
               />
@@ -88,22 +88,20 @@ export function About() {
             }`}
           >
             <span className="text-sm font-medium tracking-widest uppercase text-primary">
-              Our Story
+              Nas pribeh
             </span>
             <h2 className="mt-4 font-serif text-4xl md:text-5xl font-medium text-foreground text-balance">
-              A place where every cup tells a story
+              Misto, kde ma kazdy sacek i kazdy slek svuj pribeh
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              At Gram kafé, we believe in the simple pleasures of life—a
-              perfectly brewed coffee, a slice of homemade cake, and good
-              company. Our doors are always open to those seeking a moment of
-              peace in their busy day.
+              V Gram kafe verime na jednoduche radosti: dobre pripravenou kavu,
+              poctivy dezert a prijemnou spolecnost. Jsme misto, kde se da na
+              chvili vypnout od kazdodenniho ruchu.
             </p>
             <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              With a wide selection of specialty drinks, from seasonal pumpkin
-              lattes to refreshing homemade lemonades, and desserts crafted
-              fresh every morning, we invite you to slow down and savor the
-              moment.
+              Nabizime siroky vyber napoju od klasickeho espressa az po sezonni
+              speciality a domaci limonady. Kazde rano navic pripravujeme
+              cerstve dezerty, ktere se skvele hodi ke kazdemu setkani.
             </p>
 
             {/* Features Grid */}
@@ -118,7 +116,7 @@ export function About() {
                   }`}
                   style={{ transitionDelay: `${700 + index * 100}ms` }}
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
+                  <div className="shrink-0 w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center">
                     <feature.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
