@@ -5,10 +5,11 @@ import { Menu } from "@/components/menu"
 import { Highlights } from "@/components/highlights"
 import { Visit } from "@/components/visit"
 import { Footer } from "@/components/footer"
+import { BackToTopButton } from "@/components/back-to-top-button"
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <main id="home-top" className="min-h-screen">
       <Navbar />
       <Hero />
       <About />
@@ -16,6 +17,7 @@ export default function Home() {
       <Highlights />
       <Visit />
       <Footer />
+      <BackToTopButton />
     </main>
   )
 }

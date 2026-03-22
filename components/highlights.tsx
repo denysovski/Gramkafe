@@ -7,33 +7,33 @@ import { useEffect, useRef, useState } from "react"
 
 const highlights = [
   {
-    name: "Laskonka a cappuccino",
+    name: "Pistáciový dort s kyselou malinou",
     description:
-      "Náš oblíbený pár - jemný dezert a sametové espresso.",
-    image: "https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=900&q=80",
-    tag: "Oblíbené",
-    href: "/menu",
-  },
-  {
-    name: "Sezónní latte",
-    description: "Jemně kořeněná sezónní specialita.",
-    image: "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=80",
-    tag: "Sezóna",
-    href: "/menu",
-  },
-  {
-    name: "Domácí limonády",
-    description: "Svěžest, ovoce a bylinky v dokonalé kombinaci.",
-    image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
-    tag: "Svěžest",
-    href: "/menu",
-  },
-  {
-    name: "Sladké dezerty",
-    description: "Nadýchané chutě, které si budete chtít dát znovu.",
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
-    tag: "Sweet",
+      "Krémový pistáciový základ s výrazným malinovým akcentem pro perfektně vyváženou chuť.",
+    image: "/images/showcase1.jpg",
+    tag: "Dort",
     href: "/dorty",
+  },
+  {
+    name: "Orange Cold Brew Coffee",
+    description: "Osvěžující kombinace cold brew kávy a pomeranče s čistým, lehce citrusovým dozvukem.",
+    image: "/images/showcase2.jpg",
+    tag: "Cold Brew",
+    href: "/menu",
+  },
+  {
+    name: "Valentýnské red velvet srdce",
+    description: "Limitovaná sladká specialita s jemným krémem, která potěší na první pohled i ochutnání.",
+    image: "/images/showcase3.jpg",
+    tag: "Limitka",
+    href: "/dorty",
+  },
+  {
+    name: "Chai latte",
+    description: "Aromatický čaj s kořením a sametovým mlékem, ideální pro pomalejší odpoledne.",
+    image: "/images/showcase4.jpg",
+    tag: "Teplé nápoje",
+    href: "/menu",
   },
 ]
 

@@ -13,8 +13,26 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Gram Kafé | Výběrová káva, dezerty a útulná atmosféra',
-  description: 'Gram Kafé v Olomouci. Výběrová káva, domácí dezerty, sezónní nápoje, dárkové poukazy a dorty na míru.',
+  title: 'Gram Kafé Třešť | Kavárna, zákusky, dorty a výběrová káva',
+  description: 'Gram Kafé v Třešti: útulná kavárna s výběrovou kávou, domácími zákusky, dorty na míru, sezónními nápoji a dárkovými poukazy.',
+  keywords: [
+    'Gram Kafé Třešť',
+    'kavárna Třešť',
+    'výběrová káva Třešť',
+    'zákusky Třešť',
+    'dorty Třešť',
+    'dorty na míru Třešť',
+    'dezerty Třešť',
+    'kavárna Vysočina',
+    'dárkové poukazy kavárna',
+    'snídaně a káva Třešť',
+  ],
+  openGraph: {
+    title: 'Gram Kafé Třešť | Kavárna, zákusky, dorty a výběrová káva',
+    description: 'Navštivte Gram Kafé v Třešti. Výběrová káva, domácí zákusky, dorty na objednávku a příjemná atmosféra.',
+    locale: 'cs_CZ',
+    type: 'website',
+  },
   icons: {
     icon: [
       {

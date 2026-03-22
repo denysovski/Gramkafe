@@ -35,8 +35,26 @@ const cakes = [
     name: "Red Velvet",
     description: "Ikonický dort s jemnou strukturou a kontrastním krémem.",
     details: "Kakaový korpus, krém z philadelphie, výrazná barva",
+    image: "/images/showcase3.jpg",
+  },
+  {
+    name: "Pistáciovo-malinový dort",
+    description: "Jemná pistáciová chuť s lehce kyselým malinovým tónem.",
+    details: "Pistáciový krém, malinové jádro, lehký korpus",
+    image: "/images/showcase1.jpg",
+  },
+  {
+    name: "Karamelový cheesecake",
+    description: "Sametový cheesecake s karamelovou vrstvou a jemnou sušenkou.",
+    details: "Krémový základ, slaný karamel, sušenkové dno",
+    image: "/images/instagram-gallery-05.jpg",
+  },
+  {
+    name: "Čokoládový mousse dort",
+    description: "Nadýchaná čokoládová pěna s intenzivní chutí kakaa.",
+    details: "Mousse z hořké čokolády, jemný piškot, kakaový posyp",
     image:
-      "https://images.unsplash.com/photo-1586788680434-30f2e8e8b11d?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1558301211-0d8c8ddee6ec?auto=format&fit=crop&w=1400&q=80",
   },
 ]
 
@@ -46,19 +64,23 @@ export default function DortyPage() {
       <Navbar />
       <section className="pt-32 pb-20 md:pt-40 md:pb-24">
         <div className="mx-auto max-w-6xl px-6 lg:px-8">
-          <span className="text-sm font-medium uppercase tracking-widest text-primary">Dorty</span>
-          <h1 className="mt-4 font-serif text-4xl md:text-6xl text-foreground">Dorty v naší nabídce</h1>
-          <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-4xl">
+          <span className="text-sm font-medium uppercase tracking-widest text-primary animate-in fade-in-0 slide-in-from-bottom-2 duration-500">Dorty</span>
+          <h1 className="mt-4 font-serif text-4xl md:text-6xl text-foreground animate-in fade-in-0 slide-in-from-bottom-2 duration-700">Dorty v naší nabídce</h1>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed max-w-4xl animate-in fade-in-0 slide-in-from-bottom-2 duration-900">
             V naší kavárně připravujeme i dorty na míru. Stačí přijít s představou výsledného vzhledu a chuti -
             společně navrhneme dort, který bude odpovídat vaší příležitosti. Samozřejmostí je zohlednění alergií
             i individuálních chuťových preferencí.
           </p>
 
+          <div className="mt-5 inline-flex max-w-4xl rounded-2xl border border-[#6F4E37]/70 bg-[#6F4E37] px-5 py-3 text-sm md:text-base text-white shadow-sm animate-in fade-in-0 slide-in-from-bottom-2 duration-700">
+            Ceny dortů a zákusků jsou individuální, možné po telefonické domluvě nebo při dotazu na e-mailové adrese.
+          </div>
+
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {cakes.map((cake) => (
               <article
                 key={cake.name}
-                className="group relative min-h-[320px] overflow-hidden rounded-3xl border border-border/50"
+                  className="group relative min-h-80 overflow-hidden rounded-3xl border border-border/50 animate-in fade-in-0 zoom-in-95 duration-500"
               >
                 <Image
                   src={cake.image}

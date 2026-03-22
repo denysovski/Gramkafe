@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Link from "next/link"
+import { Award, House, Coffee } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 
@@ -36,8 +37,7 @@ export function Hero() {
               <Button
                 asChild
                 size="lg"
-                variant="outline"
-                className="rounded-full border-foreground/20 bg-transparent text-foreground hover:bg-black hover:text-white px-8 py-6 text-base transition-all duration-300"
+                className="rounded-full bg-[#6F4E37] text-white hover:bg-[#5f412d] px-8 py-6 text-base transition-all duration-300"
               >
                 <Link href="/menu">Zobrazit menu</Link>
               </Button>
@@ -45,7 +45,7 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-full border-foreground/20 bg-transparent text-foreground hover:bg-black hover:text-white px-8 py-6 text-base transition-all duration-300"
+                className="rounded-full border-[#6F4E37]/60 bg-transparent text-foreground hover:bg-[#6F4E37] hover:text-white px-8 py-6 text-base transition-all duration-300"
               >
                 <Link href="#visit">Navštivte nás</Link>
               </Button>
@@ -58,7 +58,7 @@ export function Hero() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
-            <div className="relative aspect-4/5 w-full overflow-hidden rounded-[2.25rem] border border-border/40 shadow-2xl">
+            <div className="relative aspect-4/5 w-full overflow-hidden rounded-[2.25rem] border border-border/40 shadow-2xl group">
               <Image
                 src="/images/hero-landing.jpg"
                 alt="Interiér kavárny Gram Kafé"
@@ -66,7 +66,47 @@ export function Hero() {
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-linear-to-t from-foreground/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/75 via-black/15 to-transparent" />
+              {/* Google Rating Badge */}
+              <Link
+                href="https://maps.app.goo.gl/mm6e2mkiX1HUnzvd9"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Zobrazit hodnocení na Google"
+                className="absolute top-4 right-4 cursor-pointer rounded-2xl border border-white/80 bg-white/95 shadow-xl backdrop-blur-sm px-4 py-3 flex items-center gap-2 transition-transform duration-200 hover:-translate-y-0.5"
+              >
+                <div className="flex flex-col">
+                  <div className="flex items-center gap-1">
+                    <span className="text-yellow-400 font-bold text-[22px] leading-none">★</span>
+                    <span className="font-bold text-gray-900 text-[20px] leading-none">4,7</span>
+                  </div>
+                  <span className="text-gray-700 text-[16px] leading-tight">300+ hodnocení</span>
+                </div>
+              </Link>
+
+              <div className="absolute bottom-4 left-4 flex items-end gap-2 md:gap-3 text-muted-foreground">
+                <div className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 [animation-duration:700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]">
+                  <Award className="mb-1 h-4 w-4 md:h-5 md:w-5 transition-colors duration-120 ease-linear" />
+                  <p className="text-sm md:text-base font-semibold leading-tight">10+ let</p>
+                  <p className="text-[11px] md:text-xs leading-tight">zkušeností</p>
+                </div>
+                <div
+                  className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 [animation-duration:700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]"
+                  style={{ animationDelay: "150ms" }}
+                >
+                  <House className="mb-1 h-4 w-4 md:h-5 md:w-5 transition-colors duration-120 ease-linear" />
+                  <p className="text-sm md:text-base font-semibold leading-tight">domácí</p>
+                  <p className="text-[11px] md:text-xs leading-tight">výroba</p>
+                </div>
+                <div
+                  className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 [animation-duration:700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]"
+                  style={{ animationDelay: "300ms" }}
+                >
+                  <Coffee className="mb-1 h-4 w-4 md:h-5 md:w-5 transition-colors duration-120 ease-linear" />
+                  <p className="text-sm md:text-base font-semibold leading-tight">moderní</p>
+                  <p className="text-[11px] md:text-xs leading-tight">prostory</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -128,3 +128,8 @@
     scroll-behavior: smooth;
   }
 }
+
+/* Hide Next.js dev toolbar bubble shown in bottom-left during local dev */
+nextjs-portal {
+  display: none !important;
+}

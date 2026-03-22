@@ -1,9 +1,11 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { useEffect, useRef, useState } from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
-import { BadgePercent, Clock3, CreditCard, Gift, MapPin, Sparkles } from "lucide-react"
+import { Clock3, CreditCard, Gift, MapPin, Sparkles } from "lucide-react"
 
 const openingHours = [
   { day: "Pondělí", hours: "08:00-20:00" },
@@ -15,82 +17,71 @@ const openingHours = [
   { day: "Neděle", hours: "08:00-20:00" },
 ]
 
-const team = [
-  {
-    name: "Aneta",
-    role: "Head Barista",
-    note: "Ladí espresso receptury a doporučuje ideální kávu podle vaší chuti.",
-  },
-  {
-    name: "Marek",
-    role: "Dessert Chef",
-    note: "Stará se o denní nabídku dezertů a sezónní sladké speciality.",
-  },
-  {
-    name: "Klára",
-    role: "Guest Care",
-    note: "Pomůže s výběrem a postará se o pohodovou atmosféru v kavárně.",
-  },
-  {
-    name: "Tomáš",
-    role: "Shift Lead",
-    note: "Koordinuje provoz a dohlíží na konzistentní kvalitu servisu.",
-  },
-]
-
-const busyHours = [
-  { label: "Po-Pá 10:30-13:00", level: 88 },
-  { label: "Po-Pá 16:00-18:00", level: 74 },
-  { label: "So-Ne 10:00-12:30", level: 84 },
-  { label: "So-Ne 15:30-17:30", level: 68 },
-]
-
 const tips = [
   {
     icon: Sparkles,
-    title: "Nejoblíbenější drink",
-    text: "Dirty Chai latte (99 Kč): skvělá volba, pokud chcete něco výraznějšího než klasické cappuccino.",
+    title: "Kdy dorazit",
+    text: "Pro klidnější atmosféru doporučujeme všední dny mezi 13:30-15:30.",
   },
   {
     icon: Gift,
-    title: "Doporučený dezert",
-    text: "Laskonka + cappuccino: osvědčené kombo, které hosté objednávají nejčastěji.",
+    title: "Doporučení ke kávě",
+    text: "K cappuccinu se skvěle hodí domácí zákusek nebo lehký cheesecake dle denní nabídky.",
+  },
+  {
+    icon: Sparkles,
+    title: "Objednávky dortů",
+    text: "Pro individuální nabídku dortů nám napište e-mail nebo zavolejte a vše spolu doladíme.",
   },
 ]
 
-const saleCode = "GRAMKONTAKT10"
-
 export default function KontaktPage() {
-  const [activeMember, setActiveMember] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveMember((prev) => (prev + 1) % team.length)
-    }, 5000)
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+        }
+      },
+      { threshold: 0.1 }
+    )
 
-    return () => clearInterval(timer)
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
+
+    return () => observer.disconnect()
   }, [])
-
-  const member = team[activeMember]
 
   return (
     <main className="min-h-screen">
       <Navbar />
 
-      <section className="pt-32 pb-20 md:pt-40 md:pb-24">
+      <section ref={sectionRef} className="pt-32 pb-20 md:pt-40 md:pb-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="max-w-3xl">
+          <div
+            className={`max-w-3xl transition-all duration-700 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
             <span className="text-sm font-medium uppercase tracking-widest text-primary">Kontakt</span>
             <h1 className="mt-4 font-serif text-4xl md:text-6xl text-foreground text-balance">
               Vše důležité pro návštěvu Gram Kafé na jednom místě
             </h1>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-              Otevírací doba, přehled cen, lokalita, tým i tipy, kdy je nejlepší dorazit.
+              Otevírací doba, přehled cen, lokalita a užitečné tipy pro příjemnou návštěvu.
             </p>
           </div>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            <article className="rounded-2xl border border-border/60 bg-card p-6">
+          <div
+            className={`mt-12 grid gap-6 md:grid-cols-3 transition-all duration-700 delay-100 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            <article className="rounded-2xl border border-border/60 bg-card p-6 animate-in fade-in-0 zoom-in-95 duration-300">
               <div className="flex items-center gap-3">
                 <Clock3 className="h-5 w-5 text-primary" />
                 <h2 className="font-semibold text-foreground">Otevírací doba</h2>
@@ -105,102 +96,84 @@ export default function KontaktPage() {
               </div>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-card p-6">
+            <article className="rounded-2xl border border-border/60 bg-card p-6 animate-in fade-in-0 zoom-in-95 duration-300">
               <div className="flex items-center gap-3">
                 <CreditCard className="h-5 w-5 text-primary" />
                 <h2 className="font-semibold text-foreground">Cenové rozpětí</h2>
               </div>
-              <p className="mt-4 text-3xl font-serif text-foreground">100-200 Kč</p>
-              <p className="mt-2 text-sm text-muted-foreground">na osobu</p>
+              <p className="mt-4 text-2xl font-sans text-foreground whitespace-nowrap">100-200 Kč / osoba</p>
               <p className="mt-4 text-sm text-muted-foreground">
-                Přijímáme hotovost i platební karty.
+                Přijímáme hotovost i platební karty, v případě dárkových poukazů zjistěte více {" "}
+                <Link href="/darkove-poukazy" className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors">
+                  zde
+                </Link>
+                .
               </p>
             </article>
 
-            <article className="rounded-2xl border border-border/60 bg-card p-6">
+            <article className="rounded-2xl border border-border/60 bg-card p-6 animate-in fade-in-0 zoom-in-95 duration-300">
               <div className="flex items-center gap-3">
                 <MapPin className="h-5 w-5 text-primary" />
                 <h2 className="font-semibold text-foreground">Lokalita</h2>
               </div>
-              <p className="mt-4 text-foreground">Olomouc, Česká republika</p>
-              <p className="mt-2 text-sm text-muted-foreground">V centru města, dobře dostupné pěšky i MHD.</p>
-              <p className="mt-2 text-sm text-muted-foreground">Parkování je možné v okolních ulicích.</p>
+              <p className="mt-4 text-foreground">Nádražní 448/2, 589 01 Třešť</p>
+              <p className="mt-2 text-sm text-muted-foreground">Dostupné pěšky nedaleko náměstí a autobusového nádraží.</p>
             </article>
           </div>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-2">
-            <article className="rounded-2xl border border-border/60 bg-card p-6 md:p-8">
-              <h2 className="font-serif text-3xl text-foreground">Náš tým</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Karta se automaticky přepíná každých 5 sekund.
-              </p>
-
-              <div className="mt-6 rounded-2xl border border-border/60 bg-secondary/40 p-6 min-h-[190px] transition-all duration-500">
-                <p className="text-sm uppercase tracking-widest text-primary">{member.role}</p>
-                <h3 className="mt-2 font-serif text-3xl text-foreground">{member.name}</h3>
-                <p className="mt-4 text-muted-foreground leading-relaxed">{member.note}</p>
-              </div>
-
-              <div className="mt-5 flex items-center gap-2" aria-label="Indikátor člena týmu">
-                {team.map((item, index) => (
-                  <button
-                    key={item.name}
-                    type="button"
-                    onClick={() => setActiveMember(index)}
-                    className={`h-2.5 rounded-full transition-all duration-300 ${
-                      index === activeMember ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-primary/50"
-                    }`}
-                    aria-label={`Zobrazit člena ${item.name}`}
+          <section
+            className={`mt-14 transition-all duration-700 delay-150 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            <h2 className="text-center font-serif text-3xl md:text-4xl text-foreground">Náš tým</h2>
+            <article className="mt-6 rounded-2xl border border-border/60 bg-card p-6 md:p-8">
+              <div className="grid gap-6 md:grid-cols-2 md:items-center">
+                <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-sm aspect-4/3">
+                  <Image
+                    src="/images/contact-page-showcase.jpg"
+                    alt="Tým Gram Kafé při práci v kavárně"
+                    fill
+                    className="object-cover"
                   />
-                ))}
-              </div>
-            </article>
-
-            <article className="rounded-2xl border border-border/60 bg-card p-6 md:p-8">
-              <h2 className="font-serif text-3xl text-foreground">Nejrušnější hodiny</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                Orientační přehled podle veřejně dostupných údajů Google profilu.
-              </p>
-
-              <div className="mt-6 space-y-4">
-                {busyHours.map((item) => (
-                  <div key={item.label}>
-                    <div className="mb-1 flex items-center justify-between text-sm">
-                      <span className="text-foreground">{item.label}</span>
-                      <span className="text-muted-foreground">{item.level}%</span>
-                    </div>
-                    <div className="h-2 rounded-full bg-secondary">
-                      <div className="h-full rounded-full bg-primary" style={{ width: `${item.level}%` }} />
-                    </div>
+                </div>
+                <div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    V Gram Kafé vás přivítá přátelský tým, který má rád kvalitní kávu i pohodovou atmosféru.
+                    Každý den připravujeme nápoje a dezerty s důrazem na chuť, čerstvost a milý přístup.
+                  </p>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    Rádi vám poradíme s výběrem, doporučíme sladké párování ke kávě a postaráme se, aby se u nás
+                    cítili dobře jak pravidelní hosté, tak i ti, kteří přicházejí poprvé.
+                  </p>
+                  <p className="mt-4 text-muted-foreground leading-relaxed">
+                    Za každou objednávkou je zkušenost, pečlivost a skutečný zájem o hosta. Zakládáme si na tom,
+                    aby každá návštěva byla příjemná, rychlá a zároveň osobní.
+                  </p>
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    <span className="rounded-full border border-border/70 bg-secondary/40 px-3 py-1 text-sm text-foreground">
+                      Příjemná obsluha
+                    </span>
+                    <span className="rounded-full border border-border/70 bg-secondary/40 px-3 py-1 text-sm text-foreground">
+                      Profesionalita
+                    </span>
+                    <span className="rounded-full border border-border/70 bg-secondary/40 px-3 py-1 text-sm text-foreground">
+                      Znalost odvětví
+                    </span>
                   </div>
-                ))}
+                </div>
               </div>
-
-              <p className="mt-5 text-sm text-muted-foreground">
-                Tip: Pokud chcete klidnější návštěvu, zkuste dorazit mezi 13:30-15:30.
-              </p>
             </article>
-          </div>
+          </section>
 
-          <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            <article className="rounded-2xl border border-primary/30 bg-primary/10 p-6 lg:col-span-1">
-              <div className="inline-flex items-center gap-2 rounded-full bg-primary px-3 py-1 text-xs font-medium uppercase tracking-wider text-primary-foreground">
-                <BadgePercent className="h-4 w-4" />
-                Sale tip
-              </div>
-              <h2 className="mt-4 font-serif text-2xl text-foreground">Extra kód na návštěvu</h2>
-              <p className="mt-3 text-muted-foreground">U pokladny řekněte tento kód:</p>
-              <p className="mt-4 inline-block rounded-lg bg-card px-4 py-2 text-lg font-semibold tracking-wide text-foreground">
-                {saleCode}
-              </p>
-              <p className="mt-3 text-sm text-muted-foreground">
-                Platí pro 10% slevu na nealko nápoj při objednávce dezertu.
-              </p>
-            </article>
-
-            <article className="rounded-2xl border border-border/60 bg-card p-6 lg:col-span-2">
-              <h2 className="font-serif text-3xl text-foreground">Friendly tipy od nĂˇs</h2>
-              <div className="mt-6 grid gap-4 md:grid-cols-2">
+          <section
+            className={`mt-14 transition-all duration-700 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
+            <article className="rounded-2xl border border-border/60 bg-card p-6 md:p-8">
+              <h2 className="font-serif text-3xl text-foreground">Friendly tipy</h2>
+              <div className="mt-6 grid gap-4 md:grid-cols-3">
                 {tips.map((tip) => (
                   <div key={tip.title} className="rounded-2xl border border-border/60 bg-secondary/40 p-5">
                     <div className="flex items-center gap-2">
@@ -212,13 +185,17 @@ export default function KontaktPage() {
                 ))}
               </div>
             </article>
-          </div>
+          </section>
 
-          <div className="mt-14 overflow-hidden rounded-3xl border border-border/60 shadow-lg">
+          <div
+            className={`mt-14 overflow-hidden rounded-3xl border border-border/60 shadow-lg transition-all duration-700 delay-300 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+            }`}
+          >
             <iframe
               title="Mapa Gram Kafé"
-              src="https://www.google.com/maps?q=Olomouc&output=embed"
-              className="h-[420px] w-full"
+              src="https://www.google.com/maps?q=N%C3%A1dra%C5%BEn%C3%AD%20448%2F2%2C%20589%2001%20T%C5%99e%C5%A1%C5%A5&output=embed"
+              className="h-105 w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />

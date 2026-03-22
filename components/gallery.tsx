@@ -1,39 +1,76 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
-import { X, ChevronLeft, ChevronRight } from "lucide-react"
+import { X, ChevronLeft, ChevronRight, Camera, Plus } from "lucide-react"
 
 const images = [
   {
-    src: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Latte art zblízka",
-    caption: "Precizní latte art každý den",
+    src: "/images/instagram-gallery-01.jpg",
+    alt: "Interiér kavárny Gram Kafé v Třešti",
+    caption: "Ranní světlo a první káva dne.",
+    year: "2025",
   },
   {
-    src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
-    alt: "Barista připravuje espresso",
-    caption: "Výběrová zrna a poctivá příprava",
+    src: "/images/instagram-gallery-02.jpg",
+    alt: "Baristický detail v Gram Kafé",
+    caption: "Detail, který dělá atmosféru útulnou.",
+    year: "2026",
   },
   {
-    src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
-    alt: "Interiér kavárny",
-    caption: "Útulný interiér Gram Kafé",
+    src: "/images/instagram-gallery-03.jpg",
+    alt: "Posezení a atmosféra kavárny Gram Kafé",
+    caption: "Polední pauza, klid a dobrá energie.",
+    year: "2025",
   },
   {
-    src: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80",
-    alt: "Šálek horké kávy",
-    caption: "Místo, kde se zpomaluje",
+    src: "/images/instagram-gallery-04.jpg",
+    alt: "Káva servírovaná v Gram Kafé",
+    caption: "Káva, která chutná i voní domovem.",
+    year: "2026",
   },
   {
-    src: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80",
-    alt: "Káva a dezert",
-    caption: "Káva a sladké potěšení",
+    src: "/images/instagram-gallery-05.jpg",
+    alt: "Zákusek a káva v Gram Kafé",
+    caption: "Odpoledne s dezertem je vždy lepší.",
+    year: "2025",
   },
   {
-    src: "https://images.unsplash.com/photo-1461988091159-192b6df7054f?auto=format&fit=crop&w=1200&q=80",
-    alt: "Posezení venku před kavárnou",
-    caption: "Příjemné posezení i venku",
+    src: "/images/instagram-gallery-06.jpg",
+    alt: "Večerní interiér Gram Kafé",
+    year: "2026",
+    caption: "Večerní nálada a teplé tóny interiéru.",
+  },
+  {
+    src: "/images/instagram-gallery-07.jpg",
+    alt: "Detail servírování v kavárně Gram Kafé",
+    caption: "Chvíle, kdy se čas zpomalí.",
+    year: "2025",
+  },
+  {
+    src: "/images/instagram-gallery-08.jpg",
+    alt: "Stůl s nápojem a dezertem v Gram Kafé",
+    caption: "Na stole to hraje barvami i vůní.",
+    year: "2026",
+  },
+  {
+    src: "/images/instagram-gallery-09.jpg",
+    alt: "Detail kavárenského koutku Gram Kafé",
+    caption: "Malý detail, velký dojem.",
+    year: "2025",
+  },
+  {
+    src: "/images/instagram-gallery-10.jpg",
+    alt: "Stylové prostředí Gram Kafé Třešť",
+    caption: "Stylové zákoutí pro vaše setkání.",
+    year: "2026",
+  },
+  {
+    src: "/images/instagram-gallery-12.jpg",
+    alt: "Večerní moment v Gram Kafé",
+    caption: "Finální tečka dne v Gram Kafé.",
+    year: "2025",
   },
 ]
 
@@ -107,7 +144,7 @@ export function Gallery() {
   }
 
   return (
-    <section ref={sectionRef} id="gallery" className="py-24 md:py-32 bg-secondary/30">
+    <section ref={sectionRef} id="gallery" className="py-24 md:py-32 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div
           className={`text-center max-w-2xl mx-auto transition-all duration-1000 ${
@@ -122,15 +159,25 @@ export function Gallery() {
           </h2>
         </div>
 
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        <div className="mt-16 grid grid-cols-2 gap-4 md:grid-cols-6 md:auto-rows-[240px] md:gap-6">
           {images.map((image, index) => (
             <button
               key={image.src}
               type="button"
               onClick={() => openLightbox(index)}
-              className={`group relative overflow-hidden rounded-2xl ${
-                index === 0 || index === 5 ? "md:row-span-2" : ""
-              } transition-all duration-700 ${
+              className={`group relative cursor-pointer overflow-hidden rounded-3xl border border-border/40 shadow-sm transition-all duration-700 ${
+                index === 0
+                  ? "md:col-span-2 md:row-span-2"
+                  : index === 1
+                    ? "md:col-span-2 md:row-span-2"
+                    : index === 2
+                      ? "md:col-span-2 md:row-span-2"
+                      : index === 3
+                        ? "md:col-span-2 md:row-span-2"
+                        : index === 4
+                          ? "md:col-span-2 md:row-span-2"
+                          : "md:col-span-2 md:row-span-2"
+              } ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-8"
@@ -139,24 +186,46 @@ export function Gallery() {
             >
               <div
                 className={`relative ${
-                  index === 0 || index === 5
-                    ? "aspect-3/4"
-                    : "aspect-square"
+                  "aspect-3/4 md:h-full md:aspect-auto"
                 }`}
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  className="object-cover"
                 />
                 <div className="absolute inset-0 bg-linear-to-t from-black/65 via-black/5 to-transparent" />
-                <p className="absolute bottom-3 left-3 right-3 text-xs md:text-sm text-white/95 font-medium drop-shadow-sm">
+                <span className="absolute right-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[11px] font-semibold text-foreground shadow-sm">
+                  {image.year}
+                </span>
+                <p className="absolute bottom-[15px] left-[15px] right-3 text-xs md:text-sm text-white/95 font-medium drop-shadow-sm">
                   {image.caption}
                 </p>
               </div>
             </button>
           ))}
+
+          <Link
+            href="https://www.instagram.com/gramkafe/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Označte nás na Instagramu Gram Kafé"
+            className="col-span-2 relative overflow-hidden rounded-3xl border border-[#5f412d] bg-[#6F4E37] p-6 text-white shadow-lg md:row-span-2 transition-transform duration-300 hover:-translate-y-1"
+          >
+            <div className="flex h-full flex-col items-center justify-center text-center">
+              <div className="relative mb-6 inline-flex h-24 w-24 items-center justify-center rounded-full border border-white/30 bg-white/10">
+                <Camera className="h-12 w-12" />
+                <span className="absolute -right-1 -top-1 inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-[#6F4E37]">
+                  <Plus className="h-5 w-5" />
+                </span>
+              </div>
+              <h3 className="text-2xl leading-tight">Nevidíte zde svou fotku?</h3>
+              <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/90 md:text-base">
+                Neváhejte a označte nás na Vašem Instagramu nebo Facebooku!
+              </p>
+            </div>
+          </Link>
         </div>
       </div>
 

@@ -2,11 +2,12 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { href: "/#about", label: "O nás" },
+  { href: "/#home-top", label: "Úvod" },
   { href: "/menu", label: "Menu" },
   { href: "/galerie", label: "Galerie" },
   { href: "/dorty", label: "Dorty" },
@@ -38,13 +39,21 @@ export function Navbar() {
         <div className="flex h-20 items-center justify-between">
           <Link
             href="/"
-            className="font-serif text-2xl font-semibold tracking-tight text-foreground"
+            className="inline-flex items-center gap-2 font-serif text-2xl font-semibold tracking-tight text-foreground"
           >
+            <Image
+              src="/images/coffee-bean.png"
+              alt="Ikona kávového zrnka Gram Kafé"
+              width={56}
+              height={56}
+              className="h-14 w-14 shrink-0 object-contain"
+              priority
+            />
             Gram Kafé
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden min-[1000px]:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -64,7 +73,7 @@ export function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="min-[1000px]:hidden p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -74,7 +83,7 @@ export function Navbar() {
 
         {/* Mobile Navigation */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+          className={`min-[1000px]:hidden overflow-hidden transition-all duration-500 ease-in-out ${
             isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
           }`}
         >

@@ -11,7 +11,7 @@ const categories = [
     icon: GlassWater,
     items: [
       { name: "Perníkové latte", description: "Horké latte s perníkovým sirupem", price: "89 Kč" },
-      { name: "Vánoční punč", description: "0,2 l", price: "69 Kč" },
+      { name: "Vánoční punč", description: "Tradiční svařené víno s kořením a ovocem", price: "69 Kč" },
       { name: "Hruška turbo nápoj", description: "Svařený hruškový juice a koření", price: "85 Kč" },
       { name: "Teplá Matcha tea - marakuja", description: "Jemná kombinace matchy a marakuji", price: "85 Kč" },
       { name: "Chai latte", description: "Výluh assamského čaje a koření s mléčnou pěnou", price: "75 Kč" },
@@ -145,9 +145,9 @@ const categories = [
 ]
 
 const previewSections = [
-  { id: "sezoni", label: "Sezonní nápoje" },
-  { id: "kava", label: "Káva" },
-  { id: "sladke", label: "Něco k zakousnutí" },
+  { id: "sezoni", label: "Sezonní nápoje", icon: GlassWater },
+  { id: "kava", label: "Káva", icon: Coffee },
+  { id: "sladke", label: "Něco k zakousnutí", icon: Cake },
 ] as const
 
 type MenuProps = {
@@ -272,12 +272,13 @@ export function Menu({ preview = false }: MenuProps) {
                   key={section.id}
                   type="button"
                   onClick={() => setActiveCategory(section.id)}
-                  className={`cursor-pointer rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
+                  className={`cursor-pointer flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-colors duration-300 ${
                     activeCategory === section.id
                       ? "bg-primary text-primary-foreground"
                       : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                   }`}
                 >
+                  <section.icon className="w-4 h-4" />
                   {section.label}
                 </button>
               ))}
@@ -285,49 +286,48 @@ export function Menu({ preview = false }: MenuProps) {
 
             <div
               key={activeCategory}
-              className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-in zoom-in-95 duration-200"
+              className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 animate-in zoom-in-95 duration-300"
             >
               {previewItems.map((item, index) => {
                 const meta = getItemMeta(item.name, item.description)
                 return (
                 <article
                   key={item.name}
-                  className="h-full min-h-[240px] p-5 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300 animate-in zoom-in-95"
-                  style={{ animationDelay: `${index * 50}ms` }}
+                  className="p-5 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
                 >
-                  <div className="flex h-full flex-col">
-                  <div className="mt-1 flex items-start justify-between gap-3">
-                    <h3 className="font-medium text-lg text-foreground">{meta.displayName}</h3>
+                  <div className="flex items-start justify-between gap-2">
+                    <h3 className="font-medium text-base leading-tight text-foreground">{meta.displayName}</h3>
                     <span className="text-sm font-semibold text-accent whitespace-nowrap">
                       {normalizePrice(item.price)}{meta.volume ? ` / ${meta.volume}` : ""}
                     </span>
                   </div>
 
-                  <div className="mt-3 min-h-[36px] flex flex-wrap gap-2">
+                  {meta.flavors.length > 0 && (
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
                     {meta.flavors.map((flavor) => (
                         <span
                           key={flavor}
-                          className="inline-flex rounded-full border border-border/70 bg-secondary/70 px-2.5 py-1 text-xs text-muted-foreground"
+                          className="inline-flex rounded-full border border-border/70 bg-secondary/70 px-2 py-0.5 text-[11px] text-muted-foreground"
                         >
                           {flavor}
                         </span>
                       ))}
                   </div>
+                  )}
 
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed min-h-[44px]">
-                    {meta.description || " "}
+                  <p className="mt-1 text-sm text-muted-foreground leading-snug">
+                    {meta.description}
                   </p>
-                  </div>
                 </article>
               )})}
 
               <Link
                 href="/menu"
-                className="h-full rounded-2xl bg-primary text-primary-foreground border border-primary/70 p-5 flex flex-col justify-between text-left shadow-lg hover:brightness-110 transition-all duration-300"
+                className="rounded-2xl bg-primary text-primary-foreground border border-primary/70 p-5 flex flex-col items-center justify-center text-center shadow-lg hover:brightness-110 transition-all duration-300"
               >
                 <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/85">Kompletní nabídka</p>
-                <div className="mt-3 inline-flex items-center gap-2">
-                  <span className="font-serif text-lg leading-none">Zobrazit více</span>
+                <div className="mt-2 inline-flex items-center justify-center gap-2">
+                  <span className="text-base leading-none">Zobrazit více</span>
                   <ArrowRight className="h-4 w-4" />
                 </div>
               </Link>
@@ -358,15 +358,14 @@ export function Menu({ preview = false }: MenuProps) {
 
             <div
               key={activeCategory + "-items"}
-              className={`mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 transition-all duration-1000 delay-400 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              className={`mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ${
+                isVisible ? "animate-in zoom-in-95 duration-200" : "opacity-0"
               }`}
             >
-              {activeItems.map((item, index) => (
+              {activeItems.map((item) => (
                 <article
                   key={item.name}
-                  className="group h-full p-5 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2"
-                  style={{ animationDelay: `${index * 70}ms` }}
+                  className="group h-full p-5 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500"
                 >
                   <div className="flex items-start justify-between gap-3">
                     <h3 className="font-medium text-lg text-foreground group-hover:text-primary transition-colors duration-300">

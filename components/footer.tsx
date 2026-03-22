@@ -2,6 +2,7 @@ import Link from "next/link"
 import { Clock3, Coffee, CreditCard, Facebook, Instagram, Mail, MapPin, Phone } from "lucide-react"
 
 const links = [
+  { href: "/#home-top", label: "Úvod" },
   { href: "/menu", label: "Menu" },
   { href: "/galerie", label: "Galerie" },
   { href: "/dorty", label: "Dorty" },
@@ -47,7 +48,7 @@ export function Footer() {
               </a>
             </div>
 
-            <div className="mt-6">
+            <div className="mt-10">
               <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground/80 mb-3">Navigace</h3>
               <div className="flex flex-col gap-3">
                 {links.map((link) => (
@@ -85,7 +86,7 @@ export function Footer() {
                 <MapPin className="h-4 w-4 text-primary" />
                 Lokalita
               </p>
-              <p className="mt-2 text-sm text-muted-foreground">Olomouc, Česká republika</p>
+              <p className="mt-2 text-sm text-muted-foreground">Nádražní 448/2, 589 01 Třešť</p>
             </div>
 
             <div className="pt-2 flex items-center gap-3">

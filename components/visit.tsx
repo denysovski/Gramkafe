@@ -167,7 +167,7 @@ export function Visit() {
               <Button
                 asChild
                 variant="outline"
-                className="rounded-full border-foreground/20 bg-transparent text-foreground hover:bg-black hover:text-white px-8"
+                className="rounded-full border-[#6F4E37]/60 bg-transparent text-foreground hover:bg-[#6F4E37] hover:text-white px-8 transition-all duration-300"
               >
                 <Link
                   href="mailto:gramkafe@seznam.cz"
@@ -218,57 +218,98 @@ export function Visit() {
             Automaticky posouvaný výběr recenzí
           </p>
 
-          <div className="relative mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card shadow-sm">
+          {/* Desktop: Arrows outside, narrow card */}
+          <div className="hidden md:flex items-center justify-center gap-4 mt-8">
             <button
               type="button"
               onClick={goToPrevious}
               aria-label="Předchozí recenze"
-              className="absolute left-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-card/95 text-foreground shadow-sm border border-border/60 hover:bg-[#6F4E37] hover:text-white transition-colors duration-300"
+              className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-card text-foreground shadow-sm border border-border/60 hover:bg-[#6F4E37] hover:text-white transition-colors duration-300"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-5 w-5" />
             </button>
+
+            <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card shadow-sm max-w-2xl flex-1">
+              <div
+                className="flex transition-transform duration-700 ease-out"
+                style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
+              >
+                {testimonials.map((item) => (
+                  <article key={item.name} className="w-full shrink-0 p-10">
+                    <p className="text-lg md:text-xl text-foreground leading-relaxed">"{item.text}"</p>
+                    <p className="mt-4 text-sm uppercase tracking-widest text-primary">{item.name}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
 
             <button
               type="button"
               onClick={goToNext}
               aria-label="Další recenze"
-              className="absolute right-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-card/95 text-foreground shadow-sm border border-border/60 hover:bg-[#6F4E37] hover:text-white transition-colors duration-300"
+              className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full bg-card text-foreground shadow-sm border border-border/60 hover:bg-[#6F4E37] hover:text-white transition-colors duration-300"
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-5 w-5" />
             </button>
+          </div>
 
-            <div
-              className="flex transition-transform duration-700 ease-out"
-              style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
-            >
-              {testimonials.map((item) => (
-                <article key={item.name} className="w-full shrink-0 p-8 md:p-10">
-                  <p className="text-lg md:text-xl text-foreground leading-relaxed">"{item.text}"</p>
-                  <p className="mt-4 text-sm uppercase tracking-widest text-primary">{item.name}</p>
-                </article>
-              ))}
+          {/* Mobile: Arrows inside, full width */}
+          <div className="md:hidden mt-8">
+            <div className="relative overflow-hidden rounded-3xl border border-border/50 bg-card shadow-sm">
+              <button
+                type="button"
+                onClick={goToPrevious}
+                aria-label="Předchozí recenze"
+                className="absolute left-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-card/95 text-foreground shadow-sm border border-border/60 hover:bg-[#6F4E37] hover:text-white transition-colors duration-300"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+
+              <button
+                type="button"
+                onClick={goToNext}
+                aria-label="Další recenze"
+                className="absolute right-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full bg-card/95 text-foreground shadow-sm border border-border/60 hover:bg-[#6F4E37] hover:text-white transition-colors duration-300"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </button>
+
+              <div
+                className="flex transition-transform duration-700 ease-out"
+                style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
+              >
+                {testimonials.map((item) => (
+                  <article key={item.name} className="w-full shrink-0 p-6 sm:p-8">
+                    <p className="text-base sm:text-lg text-foreground leading-relaxed">"{item.text}"</p>
+                    <p className="mt-4 text-sm uppercase tracking-widest text-primary">{item.name}</p>
+                  </article>
+                ))}
+              </div>
             </div>
           </div>
 
+          {/* Indicators below */}
           <div className="mt-5 flex items-center justify-center gap-2" aria-label="Indikátor recenzí">
             {testimonials.map((item, index) => (
               <button
                 key={item.name}
                 type="button"
                 onClick={() => goToTestimonial(index)}
-                className={`h-2.5 rounded-full transition-all duration-300 ${
-                  index === activeTestimonial ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-primary/50"
+                className={`relative h-2.5 cursor-pointer overflow-hidden rounded-full transition-all duration-300 ${
+                  index === activeTestimonial
+                    ? "w-8 bg-[#ddcbb8]"
+                    : "w-2.5 bg-border hover:bg-primary/50"
                 }`}
                 aria-label={`Přejít na recenzi ${index + 1}`}
-              />
+              >
+                {index === activeTestimonial && (
+                  <span
+                    className="absolute left-0 top-0 h-full rounded-full bg-[#6F4E37] transition-[width] duration-100"
+                    style={{ width: `${progress}%` }}
+                  />
+                )}
+              </button>
             ))}
-          </div>
-
-          <div className="mx-auto mt-3 h-1.5 w-44 overflow-hidden rounded-full bg-[#ddcbb8]">
-            <div
-              className="h-full rounded-full bg-[#6F4E37] transition-[width] duration-100"
-              style={{ width: `${progress}%` }}
-            />
           </div>
         </div>
       </div>
