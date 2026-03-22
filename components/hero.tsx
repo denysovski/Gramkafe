@@ -26,7 +26,7 @@ export function Hero() {
               Vítejte v
             </span>
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium leading-tight text-foreground text-balance">
-              útulném místě pro skvělou kávu a sladké chvíle
+              Útulném místě pro skvělou kávu a sladké chvíle
             </h1>
             <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
               Výběrová káva, domácí dezerty a nápoje, které si zamilujete.
@@ -43,8 +43,7 @@ export function Hero() {
               <Button
                 asChild
                 size="lg"
-                variant="outline"
-                className="rounded-full border-foreground/20 text-foreground hover:bg-foreground/5 px-8 py-6 text-base transition-all duration-300"
+                className="rounded-full border border-[#6F4E37] bg-[#6F4E37] text-white hover:bg-[#5f412d] hover:text-white px-8 py-6 text-base transition-all duration-300"
               >
                 <Link href="#visit">Navštivte nás</Link>
               </Button>
@@ -59,7 +58,7 @@ export function Hero() {
           >
             <div className="relative aspect-4/5 w-full overflow-hidden rounded-[2.25rem] border border-border/40 shadow-2xl">
               <Image
-                src="/images/hero-coffee.jpg"
+                src="/images/hero-snapinsta.jpg"
                 alt="Interiér kavárny Gram Kafé"
                 fill
                 className="object-cover"

@@ -78,7 +78,7 @@ export function Visit() {
             </h2>
             <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
               Najdete nás přímo v Třešti. Ať už se stavíte na rychlé espresso,
-              schůzku s přáteli nebo klidné odpoledne, rádi vás přivítáme.
+              schůzku s přáteli nebo klidné odpoledne, rádi Vás přivítáme.
             </p>
 
             {/* Info Cards */}
@@ -90,10 +90,7 @@ export function Visit() {
                 <div>
                   <h3 className="font-medium text-foreground">Otevírací doba</h3>
                   <p className="mt-1 text-muted-foreground">
-                    Otevřeno každý den do 20:00
-                  </p>
-                  <p className="text-sm text-muted-foreground">
-                    Po - Ne: 8:00 - 20:00
+                    Otevřeno každý den od 8:00 do 20:00
                   </p>
                 </div>
               </div>
@@ -139,8 +136,7 @@ export function Visit() {
               </Button>
               <Button
                 asChild
-                variant="outline"
-                className="rounded-full border-foreground/20 text-foreground hover:bg-foreground/5 px-8"
+                className="rounded-full border border-[#6F4E37] bg-[#6F4E37] text-white hover:bg-[#5f412d] hover:text-white px-8"
               >
                 <Link
                   href="mailto:gramkafe@seznam.cz"
