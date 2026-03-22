@@ -154,6 +154,37 @@ type MenuProps = {
   preview?: boolean
 }
 
+function getMenuDescription(categoryId: string, itemName: string, baseDescription: string) {
+  const lowerName = itemName.toLowerCase()
+  const lowerBase = baseDescription.toLowerCase()
+
+  if (lowerName.includes("latte")) {
+    return `${baseDescription}. Krémový, jemně sladký nápoj s plnou chutí.`
+  }
+
+  if (lowerName.includes("espresso")) {
+    return `${baseDescription}. Intenzivní kávový profil s výrazným aroma.`
+  }
+
+  if (lowerBase.includes("limonad") || lowerName.includes("mango") || lowerName.includes("bezink")) {
+    return `${baseDescription}. Svěží ovocný charakter, ideální na odpolední osvěžení.`
+  }
+
+  if (categoryId === "vina") {
+    return `${baseDescription}. Lehký a elegantní charakter pro pohodové posezení.`
+  }
+
+  if (categoryId === "alkohol") {
+    return `${baseDescription}. Výraznější chuťový profil, vhodné k večernímu posezení.`
+  }
+
+  if (categoryId === "teple") {
+    return `${baseDescription}. Příjemně zahřeje a podtrhne klidnou atmosféru kavárny.`
+  }
+
+  return `${baseDescription}. Vyvážená chuť a pečlivá příprava pro příjemný zážitek.`
+}
+
 export function Menu({ preview = false }: MenuProps) {
   const [activeCategory, setActiveCategory] = useState(
     preview ? "nealko" : categories[0].id
@@ -234,25 +265,27 @@ export function Menu({ preview = false }: MenuProps) {
               {previewItems.map((item, index) => (
                 <article
                   key={item.name}
-                  className="p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2"
+                  className="min-h-[210px] p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2 flex flex-col"
                   style={{ animationDelay: `${index * 80}ms` }}
                 >
                   <div className="mt-1 flex justify-between items-start gap-3">
                     <h3 className="font-medium text-lg text-foreground">{item.name}</h3>
                     <span className="text-sm font-semibold text-accent">{item.price}</span>
                   </div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    {getMenuDescription(activeCategory, item.name, item.description)}
+                  </p>
                 </article>
               ))}
 
               <Link
                 href="/menu"
-                className="rounded-2xl bg-primary text-primary-foreground border border-primary/70 p-6 min-h-[210px] flex flex-col items-center justify-center text-center shadow-lg hover:brightness-110 transition-all duration-300"
+                className="rounded-2xl bg-primary text-primary-foreground border border-primary/70 p-5 min-h-[210px] flex flex-col items-center justify-center text-center shadow-lg hover:brightness-110 transition-all duration-300"
               >
-                <p className="text-sm uppercase tracking-widest text-primary-foreground/85">Kompletní nabídka</p>
-                <h3 className="mt-3 font-serif text-2xl">Zobrazit více</h3>
-                <span className="mt-4 inline-flex h-10 w-10 items-center justify-center rounded-full bg-primary-foreground/15">
-                  <ArrowRight className="h-5 w-5" />
+                <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/85">Kompletní nabídka</p>
+                <h3 className="mt-2 font-serif text-xl">Zobrazit více</h3>
+                <span className="mt-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary-foreground/15">
+                  <ArrowRight className="h-4 w-4" />
                 </span>
               </Link>
             </div>
@@ -289,7 +322,7 @@ export function Menu({ preview = false }: MenuProps) {
               {activeItems.map((item, index) => (
                 <article
                   key={item.name}
-                  className="group p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2"
+                  className="group min-h-[200px] p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2 flex flex-col"
                   style={{ animationDelay: `${index * 70}ms` }}
                 >
                   <div className="flex justify-between items-start gap-3">
@@ -298,7 +331,9 @@ export function Menu({ preview = false }: MenuProps) {
                     </h3>
                     <span className="text-sm font-medium text-accent">{item.price}</span>
                   </div>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                    {getMenuDescription(activeCategory, item.name, item.description)}
+                  </p>
                 </article>
               ))}
             </div>

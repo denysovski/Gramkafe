@@ -22,6 +22,10 @@ const testimonials = [
     name: "Daniela P.",
     text: "Příjemné místo na schůzky i klidné odpoledne. Doporučuji.",
   },
+  {
+    name: "Petra S.",
+    text: "Skvělé prostředí, milá obsluha a výborné dezerty. Ráda se vracím.",
+  },
 ]
 
 export function Visit() {
@@ -49,7 +53,7 @@ export function Visit() {
   useEffect(() => {
     const timer = setInterval(() => {
       setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 3000)
+    }, 5000)
 
     return () => clearInterval(timer)
   }, [])
@@ -177,21 +181,37 @@ export function Visit() {
             Automaticky posouvaný výběr recenzí
           </p>
 
-          <div className="mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card">
+          <div className="mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card shadow-sm">
             <div
               className="flex transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
             >
               {testimonials.map((item) => (
                 <article key={item.name} className="w-full shrink-0 p-8 md:p-10">
-                  <p className="text-lg md:text-xl text-foreground leading-relaxed">
-                    \"{item.text}\"
-                  </p>
+                  <p className="text-lg md:text-xl text-foreground leading-relaxed">"{item.text}"</p>
                   <p className="mt-4 text-sm uppercase tracking-widest text-primary">{item.name}</p>
                 </article>
               ))}
             </div>
           </div>
+
+          <div className="mt-5 flex items-center justify-center gap-2" aria-label="Indikátor recenzí">
+            {testimonials.map((item, index) => (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => setActiveTestimonial(index)}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  index === activeTestimonial ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-primary/50"
+                }`}
+                aria-label={`Přejít na recenzi ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          <p className="mt-3 text-center text-sm text-muted-foreground">
+            Recenze {activeTestimonial + 1} z {testimonials.length}
+          </p>
         </div>
       </div>
     </section>

@@ -1,6 +1,8 @@
 "use client"
 
+import Link from "next/link"
 import Image from "next/image"
+import { ArrowUpRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 const highlights = [
@@ -10,24 +12,28 @@ const highlights = [
       "Náš oblíbený pár - jemný dezert a sametové espresso.",
     image: "https://images.unsplash.com/photo-1481391032119-d89fee407e44?auto=format&fit=crop&w=900&q=80",
     tag: "Oblíbené",
+    href: "/menu",
   },
   {
     name: "Sezónní latte",
     description: "Jemně kořeněná sezónní specialita.",
     image: "https://images.unsplash.com/photo-1497636577773-f1231844b336?auto=format&fit=crop&w=900&q=80",
     tag: "Sezóna",
+    href: "/menu",
   },
   {
     name: "Domácí limonády",
     description: "Svěžest, ovoce a bylinky v dokonalé kombinaci.",
     image: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80",
     tag: "Svěžest",
+    href: "/menu",
   },
   {
     name: "Sladké dezerty",
     description: "Nadýchané chutě, které si budete chtít dát znovu.",
     image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80",
     tag: "Sweet",
+    href: "/dorty",
   },
 ]
 
@@ -79,14 +85,16 @@ export function Highlights() {
         {/* Highlights Grid */}
         <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {highlights.map((item, index) => (
-            <div
+            <Link
               key={item.name}
+              href={item.href}
               className={`group cursor-pointer transition-all duration-700 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-12"
               }`}
               style={{ transitionDelay: `${300 + index * 150}ms` }}
+              aria-label={`Zobrazit více: ${item.name}`}
             >
               <div className="relative aspect-3/4 rounded-3xl overflow-hidden">
                 <Image
@@ -102,6 +110,10 @@ export function Highlights() {
                   {item.tag}
                 </span>
 
+                <span className="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-card/90 text-foreground opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                  <ArrowUpRight className="h-4 w-4" />
+                </span>
+
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
                   <h3 className="font-serif text-xl font-medium text-card">
@@ -112,7 +124,7 @@ export function Highlights() {
                   </p>
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
