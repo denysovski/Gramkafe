@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Clock, MapPin, CreditCard } from "lucide-react"
+import { Clock, MapPin, CreditCard, ChevronLeft, ChevronRight } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 const testimonials = [
@@ -31,6 +31,8 @@ const testimonials = [
 export function Visit() {
   const [isVisible, setIsVisible] = useState(false)
   const [activeTestimonial, setActiveTestimonial] = useState(0)
+  const [timerKey, setTimerKey] = useState(0)
+  const [progress, setProgress] = useState(0)
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -51,12 +53,40 @@ export function Visit() {
   }, [])
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
-    }, 5000)
+    const durationMs = 5000
+    const startedAt = Date.now()
 
-    return () => clearInterval(timer)
-  }, [])
+    setProgress(0)
+
+    const progressTimer = setInterval(() => {
+      const elapsed = Date.now() - startedAt
+      const ratio = Math.min(elapsed / durationMs, 1)
+      setProgress(ratio * 100)
+
+      if (ratio >= 1) {
+        clearInterval(progressTimer)
+        setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
+        setTimerKey((prev) => prev + 1)
+      }
+    }, 50)
+
+    return () => clearInterval(progressTimer)
+  }, [activeTestimonial, timerKey])
+
+  const goToTestimonial = (index: number) => {
+    setActiveTestimonial(index)
+    setTimerKey((prev) => prev + 1)
+  }
+
+  const goToPrevious = () => {
+    setActiveTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length)
+    setTimerKey((prev) => prev + 1)
+  }
+
+  const goToNext = () => {
+    setActiveTestimonial((prev) => (prev + 1) % testimonials.length)
+    setTimerKey((prev) => prev + 1)
+  }
 
   return (
     <section ref={sectionRef} id="visit" className="py-24 md:py-32">
@@ -136,7 +166,8 @@ export function Visit() {
               </Button>
               <Button
                 asChild
-                className="rounded-full border border-[#6F4E37] bg-[#6F4E37] text-white hover:bg-[#5f412d] hover:text-white px-8"
+                variant="outline"
+                className="rounded-full border-foreground/20 bg-transparent text-foreground hover:bg-black hover:text-white px-8"
               >
                 <Link
                   href="mailto:gramkafe@seznam.cz"
@@ -187,7 +218,25 @@ export function Visit() {
             Automaticky posouvaný výběr recenzí
           </p>
 
-          <div className="mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card shadow-sm">
+          <div className="relative mt-8 overflow-hidden rounded-3xl border border-border/50 bg-card shadow-sm">
+            <button
+              type="button"
+              onClick={goToPrevious}
+              aria-label="Předchozí recenze"
+              className="absolute left-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-card/95 text-foreground shadow-sm border border-border/60 hover:bg-[#6F4E37] hover:text-white transition-colors duration-300"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+
+            <button
+              type="button"
+              onClick={goToNext}
+              aria-label="Další recenze"
+              className="absolute right-3 top-1/2 z-10 -translate-y-1/2 inline-flex h-9 w-9 items-center justify-center rounded-full bg-card/95 text-foreground shadow-sm border border-border/60 hover:bg-[#6F4E37] hover:text-white transition-colors duration-300"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+
             <div
               className="flex transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
@@ -206,7 +255,7 @@ export function Visit() {
               <button
                 key={item.name}
                 type="button"
-                onClick={() => setActiveTestimonial(index)}
+                onClick={() => goToTestimonial(index)}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
                   index === activeTestimonial ? "w-8 bg-primary" : "w-2.5 bg-border hover:bg-primary/50"
                 }`}
@@ -215,9 +264,12 @@ export function Visit() {
             ))}
           </div>
 
-          <p className="mt-3 text-center text-sm text-muted-foreground">
-            Recenze {activeTestimonial + 1} z {testimonials.length}
-          </p>
+          <div className="mx-auto mt-3 h-1.5 w-44 overflow-hidden rounded-full bg-[#ddcbb8]">
+            <div
+              className="h-full rounded-full bg-[#6F4E37] transition-[width] duration-100"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
         </div>
       </div>
     </section>

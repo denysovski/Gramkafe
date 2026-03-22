@@ -36,14 +36,16 @@ export function Hero() {
               <Button
                 asChild
                 size="lg"
-                className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base transition-all duration-300 hover:scale-105"
+                variant="outline"
+                className="rounded-full border-foreground/20 bg-transparent text-foreground hover:bg-black hover:text-white px-8 py-6 text-base transition-all duration-300"
               >
                 <Link href="/menu">Zobrazit menu</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
-                className="rounded-full border border-[#6F4E37] bg-[#6F4E37] text-white hover:bg-[#5f412d] hover:text-white px-8 py-6 text-base transition-all duration-300"
+                variant="outline"
+                className="rounded-full border-foreground/20 bg-transparent text-foreground hover:bg-black hover:text-white px-8 py-6 text-base transition-all duration-300"
               >
                 <Link href="#visit">Navštivte nás</Link>
               </Button>

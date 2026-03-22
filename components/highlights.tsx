@@ -110,7 +110,7 @@ export function Highlights() {
                   {item.tag}
                 </span>
 
-                <span className="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-card/90 text-foreground opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                <span className="absolute top-4 right-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-card/90 text-foreground transition-all duration-300 group-hover:bg-[#6F4E37] group-hover:text-white">
                   <ArrowUpRight className="h-4 w-4" />
                 </span>
 
@@ -119,7 +119,7 @@ export function Highlights() {
                   <h3 className="font-serif text-xl font-medium text-card">
                     {item.name}
                   </h3>
-                  <p className="mt-2 text-sm text-card/80 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <p className="mt-2 text-sm text-card/90">
                     {item.description}
                   </p>
                 </div>
