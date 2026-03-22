@@ -85,13 +85,13 @@ export function Hero() {
               </Link>
 
               <div className="absolute bottom-4 left-4 flex items-end gap-2 md:gap-3 text-muted-foreground">
-                <div className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 [animation-duration:700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]">
+                <div className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 animation-duration-[700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]">
                   <Award className="mb-1 h-4 w-4 md:h-5 md:w-5 transition-colors duration-120 ease-linear" />
                   <p className="text-sm md:text-base font-semibold leading-tight">10+ let</p>
                   <p className="text-[11px] md:text-xs leading-tight">zkušeností</p>
                 </div>
                 <div
-                  className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 [animation-duration:700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]"
+                  className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 animation-duration-[700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]"
                   style={{ animationDelay: "150ms" }}
                 >
                   <House className="mb-1 h-4 w-4 md:h-5 md:w-5 transition-colors duration-120 ease-linear" />
@@ -99,8 +99,8 @@ export function Hero() {
                   <p className="text-[11px] md:text-xs leading-tight">výroba</p>
                 </div>
                 <div
-                  className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 [animation-duration:700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]"
                   style={{ animationDelay: "300ms" }}
+                  className="flex h-24 w-24 md:h-28 md:w-28 flex-col items-center justify-center rounded-full border-2 border-[#6F4E37] bg-white/95 text-center backdrop-blur-sm shadow-lg animate-in fade-in-0 slide-in-from-bottom-3 animation-duration-[700ms] transition-[background-color,border-color,color] duration-120 ease-linear hover:bg-[#6F4E37] hover:text-white hover:border-[#6F4E37]"
                 >
                   <Coffee className="mb-1 h-4 w-4 md:h-5 md:w-5 transition-colors duration-120 ease-linear" />
                   <p className="text-sm md:text-base font-semibold leading-tight">moderní</p>

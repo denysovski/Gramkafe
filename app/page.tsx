@@ -5,7 +5,7 @@ import { Menu } from "@/components/menu"
 import { Highlights } from "@/components/highlights"
 import { Visit } from "@/components/visit"
 import { Footer } from "@/components/footer"
-import { BackToTopButton } from "@/components/back-to-top-button"
+import { BackToTopButton } from "../components/back-to-top-button"
 
 export default function Home() {
   return (
