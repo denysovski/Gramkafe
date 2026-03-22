@@ -13,58 +13,61 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/hero-coffee.jpg"
-          alt="Premium coffee and desserts at Gram kafé"
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/80" />
-      </div>
-
-      {/* Content */}
-      <div
-        className={`relative z-10 mx-auto max-w-4xl px-6 text-center transition-all duration-1000 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-        }`}
-      >
-        <span className="inline-block mb-6 text-sm font-medium tracking-widest uppercase text-primary">
-          Welcome to
-        </span>
-        <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl font-medium leading-tight text-foreground text-balance">
-          Your cozy place for coffee & sweet moments
-        </h1>
-        <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-          Premium coffee, homemade desserts, and signature drinks crafted with
-          love in a warm, inviting atmosphere.
-        </p>
-        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base transition-all duration-300 hover:scale-105"
+    <section className="relative overflow-hidden pt-32 pb-20 md:pt-40 md:pb-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Left: text and actions */}
+          <div
+            className={`transition-all duration-1000 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
           >
-            <Link href="#menu">View Menu</Link>
-          </Button>
-          <Button
-            asChild
-            size="lg"
-            variant="outline"
-            className="rounded-full border-foreground/20 text-foreground hover:bg-foreground/5 px-8 py-6 text-base transition-all duration-300"
-          >
-            <Link href="#visit">Visit Us</Link>
-          </Button>
-        </div>
-      </div>
+            <span className="inline-block mb-6 text-sm font-medium tracking-widest uppercase text-primary">
+              Welcome to
+            </span>
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-medium leading-tight text-foreground text-balance">
+              Your cozy place for coffee & sweet moments
+            </h1>
+            <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-xl leading-relaxed">
+              Premium coffee, homemade desserts, and signature drinks crafted
+              with love in a warm, inviting atmosphere.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base transition-all duration-300 hover:scale-105"
+              >
+                <Link href="#menu">View Menu</Link>
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full border-foreground/20 text-foreground hover:bg-foreground/5 px-8 py-6 text-base transition-all duration-300"
+              >
+                <Link href="#visit">Visit Us</Link>
+              </Button>
+            </div>
+          </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex justify-center">
-          <div className="w-1.5 h-3 bg-foreground/50 rounded-full mt-2 animate-bounce" />
+          {/* Right: rounded image */}
+          <div
+            className={`transition-all duration-1000 delay-200 ${
+              isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            }`}
+          >
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.25rem] border border-border/40 shadow-2xl">
+              <Image
+                src="/images/hero-coffee.jpg"
+                alt="Coffee shop interior and bar setup"
+                fill
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-foreground/20 via-transparent to-transparent" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
