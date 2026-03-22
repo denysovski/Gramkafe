@@ -154,35 +154,60 @@ type MenuProps = {
   preview?: boolean
 }
 
-function getMenuDescription(categoryId: string, itemName: string, baseDescription: string) {
-  const lowerName = itemName.toLowerCase()
-  const lowerBase = baseDescription.toLowerCase()
+function normalizePrice(price: string) {
+  return price.replace(/\bKc\b/g, "Kč").replace(/\s+/g, " ").trim()
+}
 
-  if (lowerName.includes("latte")) {
-    return `${baseDescription}. Krémový, jemně sladký nápoj s plnou chutí.`
+function splitFlavorTokens(text: string) {
+  return text
+    .split(/[\/,]/)
+    .map((part) => part.trim())
+    .filter(Boolean)
+}
+
+function getItemMeta(name: string, description: string) {
+  let displayName = name.trim()
+  let workingDescription = description.trim()
+  const flavors: string[] = []
+
+  const nameParenMatch = displayName.match(/\(([^)]+)\)/)
+  if (nameParenMatch) {
+    flavors.push(...splitFlavorTokens(nameParenMatch[1]))
+    displayName = displayName.replace(/\s*\([^)]*\)/, "").trim()
   }
 
-  if (lowerName.includes("espresso")) {
-    return `${baseDescription}. Intenzivní kávový profil s výrazným aroma.`
+  if (displayName.includes(" / ")) {
+    const parts = displayName.split(" / ").map((part) => part.trim()).filter(Boolean)
+    if (parts.length > 1) {
+      displayName = parts[0]
+      flavors.push(...parts.slice(1))
+    }
   }
 
-  if (lowerBase.includes("limonad") || lowerName.includes("mango") || lowerName.includes("bezink")) {
-    return `${baseDescription}. Svěží ovocný charakter, ideální na odpolední osvěžení.`
+  const descParenMatch = workingDescription.match(/\(([^)]+)\)/)
+  if (descParenMatch) {
+    flavors.push(...splitFlavorTokens(descParenMatch[1]))
+    workingDescription = workingDescription.replace(/\s*\([^)]*\)/, "").trim()
   }
 
-  if (categoryId === "vina") {
-    return `${baseDescription}. Lehký a elegantní charakter pro pohodové posezení.`
+  const hasVolume = /\d/.test(workingDescription) && /\b(l|ml|g)\b/i.test(workingDescription)
+  const volume = hasVolume ? workingDescription : ""
+
+  if (!hasVolume && workingDescription.includes(",")) {
+    flavors.push(...splitFlavorTokens(workingDescription))
+    workingDescription = ""
   }
 
-  if (categoryId === "alkohol") {
-    return `${baseDescription}. Výraznější chuťový profil, vhodné k večernímu posezení.`
+  if (hasVolume) {
+    workingDescription = ""
   }
 
-  if (categoryId === "teple") {
-    return `${baseDescription}. Příjemně zahřeje a podtrhne klidnou atmosféru kavárny.`
+  return {
+    displayName,
+    volume,
+    description: workingDescription,
+    flavors: Array.from(new Set(flavors)).slice(0, 4),
   }
-
-  return `${baseDescription}. Vyvážená chuť a pečlivá příprava pro příjemný zážitek.`
 }
 
 export function Menu({ preview = false }: MenuProps) {
@@ -265,28 +290,46 @@ export function Menu({ preview = false }: MenuProps) {
               {previewItems.map((item, index) => (
                 <article
                   key={item.name}
-                  className="min-h-[210px] p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2 flex flex-col"
+                  className="h-full p-5 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2"
                   style={{ animationDelay: `${index * 80}ms` }}
                 >
-                  <div className="mt-1 flex justify-between items-start gap-3">
-                    <h3 className="font-medium text-lg text-foreground">{item.name}</h3>
-                    <span className="text-sm font-semibold text-accent">{item.price}</span>
+                  <div className="mt-1 flex items-start justify-between gap-3">
+                    <h3 className="font-medium text-lg text-foreground">{getItemMeta(item.name, item.description).displayName}</h3>
+                    <span className="text-sm font-semibold text-accent whitespace-nowrap">
+                      {normalizePrice(item.price)}{getItemMeta(item.name, item.description).volume ? ` / ${getItemMeta(item.name, item.description).volume}` : ""}
+                    </span>
                   </div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {getMenuDescription(activeCategory, item.name, item.description)}
-                  </p>
+
+                  {getItemMeta(item.name, item.description).flavors.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {getItemMeta(item.name, item.description).flavors.map((flavor) => (
+                        <span
+                          key={flavor}
+                          className="inline-flex rounded-full border border-border/70 bg-secondary/70 px-2.5 py-1 text-xs text-muted-foreground"
+                        >
+                          {flavor}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {getItemMeta(item.name, item.description).description && (
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                      {getItemMeta(item.name, item.description).description}
+                    </p>
+                  )}
                 </article>
               ))}
 
               <Link
                 href="/menu"
-                className="rounded-2xl bg-primary text-primary-foreground border border-primary/70 p-5 min-h-[210px] flex flex-col items-center justify-center text-center shadow-lg hover:brightness-110 transition-all duration-300"
+                className="h-full rounded-2xl bg-primary text-primary-foreground border border-primary/70 p-5 flex flex-col justify-between text-left shadow-lg hover:brightness-110 transition-all duration-300"
               >
                 <p className="text-xs uppercase tracking-[0.2em] text-primary-foreground/85">Kompletní nabídka</p>
-                <h3 className="mt-2 font-serif text-xl">Zobrazit více</h3>
-                <span className="mt-3 inline-flex h-8 w-8 items-center justify-center rounded-full bg-primary-foreground/15">
+                <div className="mt-3 inline-flex items-center gap-2">
+                  <span className="font-serif text-lg leading-none">Zobrazit více</span>
                   <ArrowRight className="h-4 w-4" />
-                </span>
+                </div>
               </Link>
             </div>
           </>
@@ -322,18 +365,36 @@ export function Menu({ preview = false }: MenuProps) {
               {activeItems.map((item, index) => (
                 <article
                   key={item.name}
-                  className="group min-h-[200px] p-6 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2 flex flex-col"
+                  className="group h-full p-5 bg-card rounded-2xl border border-border/50 hover:border-primary/30 hover:shadow-lg transition-all duration-500 animate-in fade-in-0 slide-in-from-bottom-2"
                   style={{ animationDelay: `${index * 70}ms` }}
                 >
-                  <div className="flex justify-between items-start gap-3">
+                  <div className="flex items-start justify-between gap-3">
                     <h3 className="font-medium text-lg text-foreground group-hover:text-primary transition-colors duration-300">
-                      {item.name}
+                      {getItemMeta(item.name, item.description).displayName}
                     </h3>
-                    <span className="text-sm font-medium text-accent">{item.price}</span>
+                    <span className="text-sm font-medium text-accent whitespace-nowrap">
+                      {normalizePrice(item.price)}{getItemMeta(item.name, item.description).volume ? ` / ${getItemMeta(item.name, item.description).volume}` : ""}
+                    </span>
                   </div>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {getMenuDescription(activeCategory, item.name, item.description)}
-                  </p>
+
+                  {getItemMeta(item.name, item.description).flavors.length > 0 && (
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {getItemMeta(item.name, item.description).flavors.map((flavor) => (
+                        <span
+                          key={flavor}
+                          className="inline-flex rounded-full border border-border/70 bg-secondary/70 px-2.5 py-1 text-xs text-muted-foreground"
+                        >
+                          {flavor}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {getItemMeta(item.name, item.description).description && (
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                      {getItemMeta(item.name, item.description).description}
+                    </p>
+                  )}
                 </article>
               ))}
             </div>
