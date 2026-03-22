@@ -7,33 +7,33 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react"
 const images = [
   {
     src: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Latte art zblĂ­zka",
-    caption: "PreciznĂ­ latte art kaĹľdĂ˝ den",
+    alt: "Latte art zblízka",
+    caption: "Precizní latte art každý den",
   },
   {
     src: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1200&q=80",
-    alt: "Barista pĹ™ipravuje espresso",
-    caption: "VĂ˝bÄ›rovĂˇ zrna a poctivĂˇ pĹ™Ă­prava",
+    alt: "Barista připravuje espresso",
+    caption: "Výběrová zrna a poctivá příprava",
   },
   {
     src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80",
-    alt: "InteriĂ©r kavĂˇrny",
-    caption: "ĂštulnĂ˝ interiĂ©r Gram Kafé",
+    alt: "Interiér kavárny",
+    caption: "Útulný interiér Gram Kafé",
   },
   {
     src: "https://images.unsplash.com/photo-1459755486867-b55449bb39ff?auto=format&fit=crop&w=1200&q=80",
-    alt: "Ĺ Ăˇlek horkĂ© kĂˇvy",
-    caption: "MĂ­sto, kde se zpomaluje",
+    alt: "Šálek horké kávy",
+    caption: "Místo, kde se zpomaluje",
   },
   {
     src: "https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80",
-    alt: "KĂˇva a dezert",
-    caption: "KĂˇva a sladkĂ© potÄ›ĹˇenĂ­",
+    alt: "Káva a dezert",
+    caption: "Káva a sladké potěšení",
   },
   {
     src: "https://images.unsplash.com/photo-1461988091159-192b6df7054f?auto=format&fit=crop&w=1200&q=80",
-    alt: "PosezenĂ­ venku pĹ™ed kavĂˇrnou",
-    caption: "PĹ™Ă­jemnĂ© posezenĂ­ i venku",
+    alt: "Posezení venku před kavárnou",
+    caption: "Příjemné posezení i venku",
   },
 ]
 

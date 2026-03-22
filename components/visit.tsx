@@ -8,23 +8,23 @@ import { useEffect, useRef, useState } from "react"
 const testimonials = [
   {
     name: "Klara N.",
-    text: "Miluju zdejĹˇĂ­ kĂˇvu i personĂˇl. NejlepĹˇĂ­ zastĂˇvka cestou do prĂˇce.",
+    text: "Miluju zdejší kávu i personál. Nejlepší zastávka cestou do práce.",
   },
   {
     name: "Marek T.",
-    text: "SkvÄ›lĂˇ kombinace pĹ™Ă­jemnĂ© atmosfĂ©ry, dezertĹŻ a poctivĂ©ho espressa.",
+    text: "Skvělá kombinace příjemné atmosféry, dezertů a poctivého espressa.",
   },
   {
     name: "Eva R.",
-    text: "VĂ­kendovĂ© snĂ­danÄ› a panini jsou tady top. VĹľdy se rĂˇdi vracĂ­me.",
+    text: "Víkendové snídaně a panini jsou tady top. Vždy se rádi vracíme.",
   },
   {
     name: "Daniela P.",
-    text: "PĹ™Ă­jemnĂ© mĂ­sto na schĹŻzky i klidnĂ© odpoledne. DoporuÄŤuji.",
+    text: "Příjemné místo na schůzky i klidné odpoledne. Doporučuji.",
   },
   {
     name: "Petra S.",
-    text: "SkvÄ›lĂ© prostĹ™edĂ­, milĂˇ obsluha a vĂ˝bornĂ© dezerty. RĂˇda se vracĂ­m.",
+    text: "Skvělé prostředí, milá obsluha a výborné dezerty. Ráda se vracím.",
   },
 ]
 

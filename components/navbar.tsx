@@ -6,11 +6,11 @@ import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { href: "/#about", label: "O nĂˇs" },
+  { href: "/#about", label: "O nás" },
   { href: "/menu", label: "Menu" },
   { href: "/galerie", label: "Galerie" },
   { href: "/dorty", label: "Dorty" },
-  { href: "/darkove-poukazy", label: "DĂˇrkovĂ© poukazy" },
+  { href: "/darkove-poukazy", label: "Dárkové poukazy" },
   { href: "/kontakt", label: "Kontakt" },
 ]
 

@@ -5,7 +5,7 @@ const links = [
   { href: "/menu", label: "Menu" },
   { href: "/galerie", label: "Galerie" },
   { href: "/dorty", label: "Dorty" },
-  { href: "/darkove-poukazy", label: "DĂˇrkovĂ© poukazy" },
+  { href: "/darkove-poukazy", label: "Dárkové poukazy" },
   { href: "/kontakt", label: "Kontakt" },
 ]
 
@@ -19,38 +19,47 @@ export function Footer() {
   return (
     <footer className="py-16 border-t border-border/50 bg-secondary/20">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-3">
+        <div className="grid gap-10 md:grid-cols-2">
           <div>
             <Link href="/" className="inline-flex items-center gap-3 font-serif text-2xl font-semibold text-foreground">
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm">
                 <Coffee className="h-5 w-5" />
               </span>
-              Gram KafĂ©
+              Gram Kafé
             </Link>
             <p className="mt-3 text-sm text-muted-foreground max-w-sm">
-              ĂštulnĂ© mĂ­sto pro vĂ˝bÄ›rovou kĂˇvu, dezerty a pĹ™Ă­jemnĂˇ setkĂˇnĂ­ v centru Olomouce.
+              Útulné místo pro výběrovou kávu, dezerty a příjemná setkání v centru Olomouce.
             </p>
-            <a
-              href="tel:+420000000000"
-              className="mt-5 inline-flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors duration-300"
-            >
-              <Phone className="h-4 w-4" />
-              +420 000 000 000
-            </a>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground/80">Navigace</h3>
-            <div className="mt-4 flex flex-col gap-3">
-            {links.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+            <div className="mt-5 space-y-3">
+              <a
+                href="tel:+420000000000"
+                className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors duration-300"
               >
-                {link.label}
-              </Link>
-            ))}
+                <Phone className="h-4 w-4" />
+                +420 000 000 000
+              </a>
+              <a
+                href="mailto:gramkafe@seznam.cz"
+                className="flex items-center gap-2 text-sm text-foreground hover:text-primary transition-colors duration-300"
+              >
+                <Mail className="h-4 w-4" />
+                gramkafe@seznam.cz
+              </a>
+            </div>
+
+            <div className="mt-6">
+              <h3 className="text-sm font-semibold uppercase tracking-widest text-foreground/80 mb-3">Navigace</h3>
+              <div className="flex flex-col gap-3">
+                {links.map((link) => (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-300"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -58,7 +67,7 @@ export function Footer() {
             <div className="rounded-2xl border border-border/60 bg-card p-4">
               <p className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
                 <Clock3 className="h-4 w-4 text-primary" />
-                OtevĂ­racĂ­ doba
+                Otevírací doba
               </p>
               <p className="mt-2 text-sm text-muted-foreground">Po-Ne: 08:00-20:00</p>
             </div>
@@ -66,9 +75,9 @@ export function Footer() {
             <div className="rounded-2xl border border-border/60 bg-card p-4">
               <p className="inline-flex items-center gap-2 text-sm font-medium text-foreground">
                 <CreditCard className="h-4 w-4 text-primary" />
-                CenovĂ© rozpÄ›tĂ­
+                Cenové rozpětí
               </p>
-              <p className="mt-2 text-sm text-muted-foreground">100-200 KÄŤ na osobu</p>
+              <p className="mt-2 text-sm text-muted-foreground">100-200 Kč na osobu</p>
             </div>
 
             <div className="rounded-2xl border border-border/60 bg-card p-4">
@@ -76,7 +85,7 @@ export function Footer() {
                 <MapPin className="h-4 w-4 text-primary" />
                 Lokalita
               </p>
-              <p className="mt-2 text-sm text-muted-foreground">Olomouc, ÄŚeskĂˇ republika</p>
+              <p className="mt-2 text-sm text-muted-foreground">Olomouc, Česká republika</p>
             </div>
 
             <div className="pt-2 flex items-center gap-3">
@@ -98,7 +107,7 @@ export function Footer() {
 
         <div className="mt-12 pt-8 border-t border-border/30 text-center">
           <p className="text-sm text-muted-foreground">
-            Â© {new Date().getFullYear()} Gram KafĂ©. VĹˇechna prĂˇva vyhrazena.
+            © {new Date().getFullYear()} Gram Kafé. Všechna práva vyhrazena.
           </p>
         </div>
       </div>

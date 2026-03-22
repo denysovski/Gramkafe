@@ -5,22 +5,22 @@ import { useEffect, useRef, useState } from "react"
 
 const reviews = [
   {
-    text: "SkvÄ›lĂˇ atmosfĂ©ra, vĂ˝bornĂˇ kĂˇva a laskonka, kterou musĂ­te ochutnat.",
+    text: "Skvělá atmosféra, výborná káva a laskonka, kterou musíte ochutnat.",
     author: "Marie K.",
     rating: 5,
   },
   {
-    text: "Do Gram Kafé chodĂ­m pravidelnÄ›. Chai latte mÄ› nikdy nezklame.",
-    author: "TomĂˇĹˇ V.",
+    text: "Do Gram Kafé chodím pravidelně. Chai latte mě nikdy nezklame.",
+    author: "Tomáš V.",
     rating: 5,
   },
   {
-    text: "Obsluha je vĹľdy milĂˇ a kĂˇva chutnĂˇ skvÄ›le. MĹŻj oblĂ­benĂ˝ podnik.",
+    text: "Obsluha je vždy milá a káva chutná skvěle. Můj oblíbený podnik.",
     author: "Anna M.",
     rating: 5,
   },
   {
-    text: "IdeĂˇlnĂ­ mĂ­sto na schĹŻzku i na prĂˇci. VĹľdy se zdrĹľĂ­m dĂ©le, neĹľ plĂˇnuji.",
+    text: "Ideální místo na schůzku i na práci. Vždy se zdržím déle, než plánuji.",
     author: "Jakub P.",
     rating: 5,
   },
