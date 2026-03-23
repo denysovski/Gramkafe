@@ -131,7 +131,7 @@ export default function KontaktPage() {
               <div className="grid gap-6 md:grid-cols-2 md:items-center">
                 <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-sm aspect-4/3">
                   <Image
-                    src="images/contact-page-showcase.jpg"
+                    src="/images/contact-page-showcase.jpg"
                     alt="Tým Gram Kafé při práci v kavárně"
                     fill
                     className="object-cover"
@@ -207,6 +207,7 @@ export default function KontaktPage() {
     </main>
   )
 }
+
 
 
 

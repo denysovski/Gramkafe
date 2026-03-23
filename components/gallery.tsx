@@ -7,67 +7,67 @@ import { X, ChevronLeft, ChevronRight, Camera, Plus } from "lucide-react"
 
 const images = [
   {
-    src: "images/instagram-gallery-01.jpg",
+    src: "/images/instagram-gallery-01.jpg",
     alt: "Interiér kavárny Gram Kafé v Třešti",
     caption: "Ranní světlo a první káva dne.",
     year: "2025",
   },
   {
-    src: "images/instagram-gallery-02.jpg",
+    src: "/images/instagram-gallery-02.jpg",
     alt: "Baristický detail v Gram Kafé",
     caption: "Detail, který dělá atmosféru útulnou.",
     year: "2026",
   },
   {
-    src: "images/instagram-gallery-03.jpg",
+    src: "/images/instagram-gallery-03.jpg",
     alt: "Posezení a atmosféra kavárny Gram Kafé",
     caption: "Polední pauza, klid a dobrá energie.",
     year: "2025",
   },
   {
-    src: "images/instagram-gallery-04.jpg",
+    src: "/images/instagram-gallery-04.jpg",
     alt: "Káva servírovaná v Gram Kafé",
     caption: "Káva, která chutná i voní domovem.",
     year: "2026",
   },
   {
-    src: "images/instagram-gallery-05.jpg",
+    src: "/images/instagram-gallery-05.jpg",
     alt: "Zákusek a káva v Gram Kafé",
     caption: "Odpoledne s dezertem je vždy lepší.",
     year: "2025",
   },
   {
-    src: "images/instagram-gallery-06.jpg",
+    src: "/images/instagram-gallery-06.jpg",
     alt: "Večerní interiér Gram Kafé",
     year: "2026",
     caption: "Večerní nálada a teplé tóny interiéru.",
   },
   {
-    src: "images/instagram-gallery-07.jpg",
+    src: "/images/instagram-gallery-07.jpg",
     alt: "Detail servírování v kavárně Gram Kafé",
     caption: "Chvíle, kdy se čas zpomalí.",
     year: "2025",
   },
   {
-    src: "images/instagram-gallery-08.jpg",
+    src: "/images/instagram-gallery-08.jpg",
     alt: "Stůl s nápojem a dezertem v Gram Kafé",
     caption: "Na stole to hraje barvami i vůní.",
     year: "2026",
   },
   {
-    src: "images/instagram-gallery-09.jpg",
+    src: "/images/instagram-gallery-09.jpg",
     alt: "Detail kavárenského koutku Gram Kafé",
     caption: "Malý detail, velký dojem.",
     year: "2025",
   },
   {
-    src: "images/instagram-gallery-10.jpg",
+    src: "/images/instagram-gallery-10.jpg",
     alt: "Stylové prostředí Gram Kafé Třešť",
     caption: "Stylové zákoutí pro vaše setkání.",
     year: "2026",
   },
   {
-    src: "images/instagram-gallery-12.jpg",
+    src: "/images/instagram-gallery-12.jpg",
     alt: "Večerní moment v Gram Kafé",
     caption: "Finální tečka dne v Gram Kafé.",
     year: "2025",
@@ -292,6 +292,7 @@ export function Gallery() {
     </section>
   )
 }
+
 
 
 

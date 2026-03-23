@@ -35,19 +35,19 @@ const cakes = [
     name: "Red Velvet",
     description: "Ikonický dort s jemnou strukturou a kontrastním krémem.",
     details: "Kakaový korpus, krém z philadelphie, výrazná barva",
-    image: "images/showcase3.jpg",
+    image: "/images/showcase3.jpg",
   },
   {
     name: "Pistáciovo-malinový dort",
     description: "Jemná pistáciová chuť s lehce kyselým malinovým tónem.",
     details: "Pistáciový krém, malinové jádro, lehký korpus",
-    image: "images/showcase1.jpg",
+    image: "/images/showcase1.jpg",
   },
   {
     name: "Karamelový cheesecake",
     description: "Sametový cheesecake s karamelovou vrstvou a jemnou sušenkou.",
     details: "Krémový základ, slaný karamel, sušenkové dno",
-    image: "images/instagram-gallery-05.jpg",
+    image: "/images/instagram-gallery-05.jpg",
   },
   {
     name: "Čokoládový mousse dort",
@@ -111,6 +111,7 @@ export default function DortyPage() {
     </main>
   )
 }
+
 
 
 
