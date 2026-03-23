@@ -20,6 +20,9 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
+    // Check initial scroll position on mount (handles page refresh mid-scroll)
+    setIsScrolled(window.scrollY > 50)
+
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
     }
