@@ -1,6 +1,6 @@
 /**
  * Get the correct image path with basePath prefix for GitHub Pages
- * @param path - The image path (e.g., "/images/showcase1.jpg")
+ * @param path - The image path (e.g., "images/showcase1.jpg")
  * @returns The full path with basePath if needed
  */
 export function getImagePath(path: string): string {
@@ -16,6 +16,7 @@ export function getImagePath(path: string): string {
   
   return path
 }
+
 
 
 

@@ -45,7 +45,7 @@ export function Navbar() {
             className="inline-flex items-center gap-2 font-serif text-2xl font-semibold tracking-tight text-foreground"
           >
             <Image
-              src="/images/coffee-bean.png"
+              src="images/coffee-bean.png"
               alt="Ikona kávového zrnka Gram Kafé"
               width={56}
               height={56}
@@ -115,6 +115,7 @@ export function Navbar() {
     </header>
   )
 }
+
 
 
 

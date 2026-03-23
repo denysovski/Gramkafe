@@ -6,7 +6,6 @@ const nextConfig = {
   output: "export",
   trailingSlash: true,
   basePath: isGithubActions ? `/${repoName}` : "",
-  assetPrefix: isGithubActions ? `/${repoName}` : "",
   typescript: {
     ignoreBuildErrors: true,
   },
