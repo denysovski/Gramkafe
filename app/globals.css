@@ -134,31 +134,42 @@ nextjs-portal {
   display: none !important;
 }
 
-@keyframes card-wave {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0);
-  }
-  25% {
-    transform: translate3d(0, -3px, 0);
-  }
-  50% {
-    transform: translate3d(0, -5px, 0);
-  }
-  75% {
-    transform: translate3d(0, -2px, 0);
-  }
+.glare-hover {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
-.contact-tip-wave {
-  will-change: transform;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  animation: card-wave 6.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+.glare-hover::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.22) 45%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: translateX(-140%) rotate(10deg);
+  transition: transform 680ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.glare-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.22);
+}
+
+.glare-hover:hover::before {
+  transform: translateX(140%) rotate(10deg);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-tip-wave {
-    animation: none;
+  .glare-hover,
+  .glare-hover::before {
+    transition: none;
+    transform: none;
   }
 }

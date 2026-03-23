@@ -178,8 +178,8 @@ export default function KontaktPage() {
             <article className="rounded-2xl border border-border/60 p-6 md:p-8">
               <h2 className="text-sm font-medium uppercase tracking-widest text-primary">Friendly tipy</h2>
               <div className="mt-6 grid gap-4 md:grid-cols-3">
-                {tips.map((tip, index) => (
-                  <div key={tip.title} className="contact-tip-wave rounded-2xl border border-[#6F4E37]/80 bg-[#6F4E37] p-6 shadow-md shadow-black/20" style={{ animationDelay: `${index * 0.25}s` }}>
+                {tips.map((tip) => (
+                  <div key={tip.title} className="glare-hover rounded-2xl border border-[#6F4E37]/80 bg-[#6F4E37] p-6 shadow-md shadow-black/20">
                     <div className="flex items-center gap-2">
                       <tip.icon className="h-5 w-5 text-white" />
                       <h3 className="text-lg font-semibold text-white">{tip.title}</h3>
