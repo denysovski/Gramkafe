@@ -10,28 +10,28 @@ const highlights = [
     name: "Pistáciový dort s kyselou malinou",
     description:
       "Krémový pistáciový základ s výrazným malinovým akcentem pro perfektně vyváženou chuť.",
-    image: "/images/showcase1.jpg",
+    image: "images/showcase1.jpg",
     tag: "Dort",
     href: "/dorty",
   },
   {
     name: "Orange Cold Brew Coffee",
     description: "Osvěžující kombinace cold brew kávy a pomeranče s čistým, lehce citrusovým dozvukem.",
-    image: "/images/showcase2.jpg",
+    image: "images/showcase2.jpg",
     tag: "Cold Brew",
     href: "/menu",
   },
   {
     name: "Valentýnské red velvet srdce",
     description: "Limitovaná sladká specialita s jemným krémem, která potěší na první pohled i ochutnání.",
-    image: "/images/showcase3.jpg",
+    image: "images/showcase3.jpg",
     tag: "Limitka",
     href: "/dorty",
   },
   {
     name: "Chai latte",
     description: "Aromatický čaj s kořením a sametovým mlékem, ideální pro pomalejší odpoledne.",
-    image: "/images/showcase4.jpg",
+    image: "images/showcase4.jpg",
     tag: "Teplé nápoje",
     href: "/menu",
   },
@@ -131,5 +131,6 @@ export function Highlights() {
     </section>
   )
 }
+
 
 
