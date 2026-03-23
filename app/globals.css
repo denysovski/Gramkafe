@@ -133,3 +133,17 @@
 nextjs-portal {
   display: none !important;
 }
+
+@keyframes card-wave {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.contact-tip-wave {
+  animation: card-wave 4.8s ease-in-out infinite;
+}
