@@ -137,13 +137,28 @@ nextjs-portal {
 @keyframes card-wave {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(0, -3px, 0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translate3d(0, -5px, 0);
+  }
+  75% {
+    transform: translate3d(0, -2px, 0);
   }
 }
 
 .contact-tip-wave {
-  animation: card-wave 4.8s ease-in-out infinite;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  animation: card-wave 6.8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-tip-wave {
+    animation: none;
+  }
 }
