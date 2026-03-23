@@ -101,7 +101,7 @@ export default function KontaktPage() {
                 <CreditCard className="h-5 w-5 text-primary" />
                 <h2 className="font-semibold text-foreground">Cenové rozpětí</h2>
               </div>
-              <p className="mt-4 text-2xl font-sans text-foreground whitespace-nowrap">100-200 Kč / osoba</p>
+              <p className="mt-4 text-xl sm:text-2xl font-sans text-foreground leading-tight break-words">100-200 Kč / osoba</p>
               <p className="mt-4 text-sm text-muted-foreground">
                 Přijímáme hotovost i platební karty, v případě dárkových poukazů zjistěte více {" "}
                 <Link href="/darkove-poukazy" className="text-primary underline underline-offset-2 hover:text-primary/80 transition-colors">
@@ -126,7 +126,6 @@ export default function KontaktPage() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <h2 className="text-center font-serif text-3xl md:text-4xl text-foreground">Náš tým</h2>
             <article className="mt-6 rounded-2xl border border-border/60 bg-card p-6 md:p-8">
               <div className="grid gap-6 md:grid-cols-2 md:items-center">
                 <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-sm aspect-4/3">
@@ -136,8 +135,13 @@ export default function KontaktPage() {
                     fill
                     className="object-cover"
                   />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/55 via-black/15 to-black/5" />
+                  <p className="absolute bottom-4 left-4 right-4 text-sm font-medium tracking-wide text-white md:text-base">
+                    Komunita zaměstnanců Gramkafé
+                  </p>
                 </div>
                 <div>
+                  <span className="text-sm font-medium uppercase tracking-widest text-primary">Náš tým</span>
                   <p className="text-muted-foreground leading-relaxed">
                     V Gram Kafé vás přivítá přátelský tým, který má rád kvalitní kávu i pohodovou atmosféru.
                     Každý den připravujeme nápoje a dezerty s důrazem na chuť, čerstvost a milý přístup.
@@ -150,14 +154,14 @@ export default function KontaktPage() {
                     Za každou objednávkou je zkušenost, pečlivost a skutečný zájem o hosta. Zakládáme si na tom,
                     aby každá návštěva byla příjemná, rychlá a zároveň osobní.
                   </p>
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="rounded-full border border-border/70 bg-secondary/40 px-3 py-1 text-sm text-foreground">
+                  <div className="mt-5 flex flex-wrap gap-3">
+                    <span className="rounded-2xl border border-[#6F4E37]/80 bg-[#6F4E37] px-4 py-2 text-base font-medium text-white">
                       Příjemná obsluha
                     </span>
-                    <span className="rounded-full border border-border/70 bg-secondary/40 px-3 py-1 text-sm text-foreground">
+                    <span className="rounded-2xl border border-[#6F4E37]/80 bg-[#6F4E37] px-4 py-2 text-base font-medium text-white">
                       Profesionalita
                     </span>
-                    <span className="rounded-full border border-border/70 bg-secondary/40 px-3 py-1 text-sm text-foreground">
+                    <span className="rounded-2xl border border-[#6F4E37]/80 bg-[#6F4E37] px-4 py-2 text-base font-medium text-white">
                       Znalost odvětví
                     </span>
                   </div>
@@ -172,15 +176,15 @@ export default function KontaktPage() {
             }`}
           >
             <article className="rounded-2xl border border-border/60 bg-card p-6 md:p-8">
-              <h2 className="font-serif text-3xl text-foreground">Friendly tipy</h2>
+              <h2 className="text-sm font-medium uppercase tracking-widest text-primary">Friendly tipy</h2>
               <div className="mt-6 grid gap-4 md:grid-cols-3">
-                {tips.map((tip) => (
-                  <div key={tip.title} className="rounded-2xl border border-border/60 bg-secondary/40 p-5">
+                {tips.map((tip, index) => (
+                  <div key={tip.title} className="contact-tip-wave rounded-2xl border border-[#6F4E37]/80 bg-[#6F4E37] p-6" style={{ animationDelay: `${index * 0.25}s` }}>
                     <div className="flex items-center gap-2">
-                      <tip.icon className="h-5 w-5 text-primary" />
-                      <h3 className="font-semibold text-foreground">{tip.title}</h3>
+                      <tip.icon className="h-5 w-5 text-white" />
+                      <h3 className="text-lg font-semibold text-white">{tip.title}</h3>
                     </div>
-                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{tip.text}</p>
+                    <p className="mt-3 text-base leading-relaxed text-white/90">{tip.text}</p>
                   </div>
                 ))}
               </div>
