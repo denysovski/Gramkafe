@@ -126,7 +126,7 @@ export default function KontaktPage() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <article className="mt-6 rounded-2xl border border-border/60 bg-card p-6 md:p-8">
+            <article className="mt-6 rounded-2xl border border-border/60 p-6 md:p-8">
               <div className="grid gap-6 md:grid-cols-2 md:items-center">
                 <div className="relative overflow-hidden rounded-2xl border border-border/50 shadow-sm aspect-4/3">
                   <Image
@@ -141,7 +141,7 @@ export default function KontaktPage() {
                   </p>
                 </div>
                 <div>
-                  <span className="text-sm font-medium uppercase tracking-widest text-primary">Náš tým</span>
+                  <span className="mb-6 block text-sm font-medium uppercase tracking-widest text-primary md:mb-8">Náš tým</span>
                   <p className="text-muted-foreground leading-relaxed">
                     V Gram Kafé vás přivítá přátelský tým, který má rád kvalitní kávu i pohodovou atmosféru.
                     Každý den připravujeme nápoje a dezerty s důrazem na chuť, čerstvost a milý přístup.
@@ -175,11 +175,11 @@ export default function KontaktPage() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
             }`}
           >
-            <article className="rounded-2xl border border-border/60 bg-card p-6 md:p-8">
+            <article className="rounded-2xl border border-border/60 p-6 md:p-8">
               <h2 className="text-sm font-medium uppercase tracking-widest text-primary">Friendly tipy</h2>
               <div className="mt-6 grid gap-4 md:grid-cols-3">
                 {tips.map((tip, index) => (
-                  <div key={tip.title} className="contact-tip-wave rounded-2xl border border-[#6F4E37]/80 bg-[#6F4E37] p-6" style={{ animationDelay: `${index * 0.25}s` }}>
+                  <div key={tip.title} className="contact-tip-wave rounded-2xl border border-[#6F4E37]/80 bg-[#6F4E37] p-6 shadow-md shadow-black/20" style={{ animationDelay: `${index * 0.25}s` }}>
                     <div className="flex items-center gap-2">
                       <tip.icon className="h-5 w-5 text-white" />
                       <h3 className="text-lg font-semibold text-white">{tip.title}</h3>
